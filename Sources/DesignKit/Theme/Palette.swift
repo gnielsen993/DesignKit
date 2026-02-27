@@ -6,41 +6,41 @@ public enum Palette {
         case .dark:
             let accent = darkAccent(for: preset)
             return ThemeColors(
-                background: Color(hex: "#191B1C"),
-                surface: Color(hex: "#222527"),
-                surfaceElevated: Color(hex: "#2A2E31"),
-                border: Color.white.opacity(0.10),
-                textPrimary: Color(hex: "#F1EFE8"),
-                textSecondary: Color(hex: "#C4C0B3"),
-                textTertiary: Color(hex: "#9A968B"),
+                background: Color(hex: "#0B0E14"),
+                surface: Color(hex: "#111827"),
+                surfaceElevated: Color(hex: "#1F2937"),
+                border: Color.white.opacity(0.12),
+                textPrimary: Color(hex: "#F9FAFB"),
+                textSecondary: Color(hex: "#D1D5DB"),
+                textTertiary: Color(hex: "#9CA3AF"),
                 accentPrimary: accent,
-                accentSecondary: accent.opacity(0.75),
-                highlight: accent.opacity(0.18),
-                success: Color(hex: "#6BA97E"),
-                warning: Color(hex: "#B99252"),
-                danger: Color(hex: "#A15E63"),
-                fillPressed: Color.white.opacity(0.06),
-                fillSelected: accent.opacity(0.20),
-                fillDisabled: Color.white.opacity(0.12)
+                accentSecondary: accent.opacity(0.78),
+                highlight: accent.opacity(0.20),
+                success: Color(hex: "#22C55E"),
+                warning: Color(hex: "#F59E0B"),
+                danger: Color(hex: "#EF4444"),
+                fillPressed: Color.white.opacity(0.07),
+                fillSelected: accent.opacity(0.24),
+                fillDisabled: Color.white.opacity(0.14)
             )
         default:
             let accent = lightAccent(for: preset)
             return ThemeColors(
-                background: Color(hex: "#F6F1E7"),
-                surface: Color(hex: "#EFE7D9"),
-                surfaceElevated: Color(hex: "#F8F3EA"),
-                border: Color.black.opacity(0.08),
-                textPrimary: Color(hex: "#22201B"),
-                textSecondary: Color(hex: "#524D41"),
-                textTertiary: Color(hex: "#7A7364"),
+                background: Color(hex: "#F8FAFC"),
+                surface: Color(hex: "#FFFFFF"),
+                surfaceElevated: Color(hex: "#FFFFFF"),
+                border: Color(hex: "#E2E8F0"),
+                textPrimary: Color(hex: "#0F172A"),
+                textSecondary: Color(hex: "#334155"),
+                textTertiary: Color(hex: "#64748B"),
                 accentPrimary: accent,
-                accentSecondary: accent.opacity(0.75),
+                accentSecondary: accent.opacity(0.82),
                 highlight: accent.opacity(0.12),
-                success: Color(hex: "#5D8D6D"),
-                warning: Color(hex: "#A57E45"),
-                danger: Color(hex: "#8F4A52"),
-                fillPressed: Color.black.opacity(0.04),
-                fillSelected: accent.opacity(0.15),
+                success: Color(hex: "#16A34A"),
+                warning: Color(hex: "#D97706"),
+                danger: Color(hex: "#DC2626"),
+                fillPressed: Color.black.opacity(0.05),
+                fillSelected: accent.opacity(0.16),
                 fillDisabled: Color.black.opacity(0.10)
             )
         }
@@ -76,21 +76,21 @@ public enum Palette {
 
     private static func lightAccent(for preset: ThemePreset) -> Color {
         switch preset {
-        case .forest: Color(hex: "#2E5A46")
-        case .navy: Color(hex: "#294A74")
-        case .maroon: Color(hex: "#6B2A36")
-        case .walnut: Color(hex: "#6A4E3A")
-        case .stone: Color(hex: "#4E626F")
+        case .forest: Color(hex: "#0F766E")
+        case .navy: Color(hex: "#2563EB")
+        case .maroon: Color(hex: "#BE123C")
+        case .walnut: Color(hex: "#B45309")
+        case .stone: Color(hex: "#475569")
         }
     }
 
     private static func darkAccent(for preset: ThemePreset) -> Color {
         switch preset {
-        case .forest: Color(hex: "#6FA986")
-        case .navy: Color(hex: "#6E93C1")
-        case .maroon: Color(hex: "#BC7E8B")
-        case .walnut: Color(hex: "#B08E6B")
-        case .stone: Color(hex: "#95AAB5")
+        case .forest: Color(hex: "#14B8A6")
+        case .navy: Color(hex: "#60A5FA")
+        case .maroon: Color(hex: "#FB7185")
+        case .walnut: Color(hex: "#F59E0B")
+        case .stone: Color(hex: "#94A3B8")
         }
     }
 }
