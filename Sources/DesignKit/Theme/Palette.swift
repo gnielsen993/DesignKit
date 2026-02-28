@@ -6,9 +6,9 @@ public enum Palette {
         case .dark:
             let accent = darkAccent(for: preset)
             return ThemeColors(
-                background: Color(hex: "#0B0E14"),
-                surface: Color(hex: "#111827"),
-                surfaceElevated: Color(hex: "#1F2937"),
+                background: Color(hex: "#090909"),
+                surface: Color(hex: "#131313"),
+                surfaceElevated: Color(hex: "#1C1C1E"),
                 border: Color.white.opacity(0.12),
                 textPrimary: Color(hex: "#F9FAFB"),
                 textSecondary: Color(hex: "#D1D5DB"),
