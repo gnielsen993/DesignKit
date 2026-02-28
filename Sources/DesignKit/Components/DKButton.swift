@@ -30,11 +30,13 @@ public struct DKButton: View {
         Button(action: action) {
             Text(title)
                 .font(theme.typography.headline)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, theme.spacing.m)
+                .frame(maxWidth: .infinity, minHeight: 44)
+                .padding(.vertical, theme.spacing.s)
+                .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .disabled(!isEnabled)
+        .allowsHitTesting(isEnabled)
         .foregroundStyle(foreground)
         .background(background)
         .opacity(isEnabled ? 1 : 0.75)
