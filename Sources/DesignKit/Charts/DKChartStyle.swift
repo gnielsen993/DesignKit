@@ -11,9 +11,15 @@ public struct DKChartCardStyle: ViewModifier {
     public func body(content: Content) -> some View {
         content
             .chartXAxis {
-                AxisMarks { _ in
+                AxisMarks(values: .automatic(desiredCount: 4)) { value in
                     AxisGridLine().foregroundStyle(theme.colors.textTertiary.opacity(theme.charts.gridlineOpacity))
-                    AxisValueLabel().foregroundStyle(theme.colors.textSecondary.opacity(theme.charts.axisLabelOpacity))
+                    if let date = value.as(Date.self) {
+                        AxisValueLabel(date, format: .dateTime.month(.defaultDigits).day())
+                            .foregroundStyle(theme.colors.textSecondary.opacity(theme.charts.axisLabelOpacity))
+                    } else {
+                        AxisValueLabel()
+                            .foregroundStyle(theme.colors.textSecondary.opacity(theme.charts.axisLabelOpacity))
+                    }
                 }
             }
             .chartYAxis {
