@@ -46,16 +46,16 @@ public struct DKButton: View {
     private var foreground: Color {
         guard isEnabled else { return theme.colors.textTertiary }
         switch style {
-        case .primary: theme.colors.surfaceElevated
-        case .secondary: theme.colors.textPrimary
+        case .primary: return theme.colors.surfaceElevated
+        case .secondary: return theme.colors.textPrimary
         }
     }
 
     private var background: Color {
         guard isEnabled else { return theme.colors.fillDisabled }
         switch style {
-        case .primary: theme.colors.accentPrimary
-        case .secondary: theme.colors.highlight
+        case .primary: return theme.colors.accentPrimary
+        case .secondary: return theme.colors.highlight
         }
     }
 }
