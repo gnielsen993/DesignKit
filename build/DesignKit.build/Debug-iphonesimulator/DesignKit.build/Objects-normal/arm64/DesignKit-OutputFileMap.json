@@ -1,0 +1,229 @@
+{
+  "" : {
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary.dia",
+    "emit-module-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary-emit-module.dia",
+    "pch" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary.swiftdeps"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Charts/DKChartStyle.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKChartStyle.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKChartStyle.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKChartStyle.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKChartStyle.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKChartStyle.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKChartStyle.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKChartStyle.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKChartStyle~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKBadge.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKBadge.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKBadge.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKBadge.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKBadge.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKBadge.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKBadge.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKBadge.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKBadge~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKButton.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKButton.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKButton.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKButton.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKButton.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKButton.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKButton.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKButton.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKButton~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKCard.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKCard.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKCard.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKCard.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKCard.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKCard.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKCard.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKCard.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKCard~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKProgressRing.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKProgressRing.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKProgressRing.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKProgressRing.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKProgressRing.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKProgressRing.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKProgressRing.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKProgressRing.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKProgressRing~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKSectionHeader.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKSectionHeader.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKSectionHeader.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKSectionHeader.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKSectionHeader.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKSectionHeader.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKSectionHeader.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKSectionHeader.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKSectionHeader~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Layout/RadiusTokens.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/RadiusTokens.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/RadiusTokens.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/RadiusTokens.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/RadiusTokens.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/RadiusTokens.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/RadiusTokens.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/RadiusTokens.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/RadiusTokens~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Layout/SpacingTokens.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/SpacingTokens.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/SpacingTokens.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/SpacingTokens.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/SpacingTokens.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/SpacingTokens.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/SpacingTokens.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/SpacingTokens.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/SpacingTokens~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Motion/MotionTokens.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/MotionTokens.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/MotionTokens.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/MotionTokens.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/MotionTokens.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/MotionTokens.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/MotionTokens.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/MotionTokens.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/MotionTokens~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Storage/ThemeBackupCodec.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupCodec.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupCodec.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupCodec.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupCodec.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupCodec.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupCodec.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupCodec.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupCodec~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Storage/ThemeBackupService.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupService.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupService.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupService.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupService.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupService.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupService.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupService.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupService~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Storage/ThemeStorage.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeStorage.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeStorage.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeStorage.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeStorage.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeStorage.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeStorage.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeStorage.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeStorage~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/Palette.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Palette.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Palette.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Palette.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Palette.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Palette.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Palette.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Palette.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Palette~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/Theme.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Theme.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Theme.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Theme.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Theme.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Theme.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Theme.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Theme.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Theme~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/ThemeManager.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeManager.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeManager.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeManager.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeManager.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeManager.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeManager.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeManager.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeManager~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/ThemeMode.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeMode.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeMode.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeMode.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeMode.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeMode.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeMode.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeMode.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeMode~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/ThemeOverrides.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeOverrides.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeOverrides.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeOverrides.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeOverrides.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeOverrides.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeOverrides.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeOverrides.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeOverrides~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/ThemePreset.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemePreset.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemePreset.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemePreset.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemePreset.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemePreset.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemePreset.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemePreset.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemePreset~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/ThemeResolver.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeResolver.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeResolver.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeResolver.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeResolver.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeResolver.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeResolver.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeResolver.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeResolver~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/Tokens.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Tokens.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Tokens.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Tokens.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Tokens.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Tokens.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Tokens.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Tokens.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Tokens~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Typography/TypographyTokens.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/TypographyTokens.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/TypographyTokens.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/TypographyTokens.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/TypographyTokens.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/TypographyTokens.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/TypographyTokens.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/TypographyTokens.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/TypographyTokens~partial.swiftmodule"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Utilities/Color+Hex.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Color+Hex.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Color+Hex.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Color+Hex.dia",
+    "index-unit-output-path" : "/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Color+Hex.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Color+Hex.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Color+Hex.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Color+Hex.swiftdeps",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/arm64/Color+Hex~partial.swiftmodule"
+  }
+}

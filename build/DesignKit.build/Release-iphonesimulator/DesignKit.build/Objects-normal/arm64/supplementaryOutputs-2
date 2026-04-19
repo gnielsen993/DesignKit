@@ -1,0 +1,12 @@
+{
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Charts/DKChartStyle.swift" : {
+    "abi-baseline-json" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit.abi.json",
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary.dia",
+    "objc-header" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-Swift.h",
+    "swiftdoc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit.swiftdoc",
+    "swiftmodule" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit.swiftmodule",
+    "swiftsourceinfo" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit.swiftsourceinfo"
+  }
+}

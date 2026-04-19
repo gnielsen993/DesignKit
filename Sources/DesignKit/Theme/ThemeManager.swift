@@ -27,6 +27,14 @@ public final class ThemeManager: ObservableObject {
     }
 
     public func theme(using systemScheme: ColorScheme) -> Theme {
-        Theme.resolve(preset: preset, scheme: resolvedScheme(using: systemScheme))
+        theme(using: systemScheme, overrides: nil)
+    }
+
+    public func theme(using systemScheme: ColorScheme, overrides: ThemeOverrides?) -> Theme {
+        Theme.resolve(
+            preset: preset,
+            scheme: resolvedScheme(using: systemScheme),
+            overrides: overrides
+        )
     }
 }

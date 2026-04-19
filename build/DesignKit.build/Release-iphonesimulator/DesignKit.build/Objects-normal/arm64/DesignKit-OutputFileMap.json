@@ -1,0 +1,121 @@
+{
+  "" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary.dia",
+    "emit-module-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary-emit-module.dia",
+    "pch" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DesignKit-primary.swiftdeps"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Charts/DKChartStyle.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKChartStyle.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKChartStyle.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKChartStyle.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKBadge.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKBadge.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKBadge.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKBadge.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKButton.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKButton.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKButton.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKButton.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKCard.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKCard.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKCard.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKCard.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKProgressRing.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKProgressRing.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKProgressRing.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKProgressRing.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKSectionHeader.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKSectionHeader.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKSectionHeader.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/DKSectionHeader.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Layout/RadiusTokens.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/RadiusTokens.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/RadiusTokens.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/RadiusTokens.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Layout/SpacingTokens.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/SpacingTokens.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/SpacingTokens.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/SpacingTokens.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Motion/MotionTokens.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/MotionTokens.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/MotionTokens.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/MotionTokens.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Storage/ThemeBackupCodec.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupCodec.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupCodec.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupCodec.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Storage/ThemeBackupService.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupService.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupService.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeBackupService.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Storage/ThemeStorage.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeStorage.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeStorage.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeStorage.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/Palette.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Palette.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Palette.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Palette.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/Theme.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Theme.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Theme.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Theme.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/ThemeManager.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeManager.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeManager.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeManager.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/ThemeMode.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeMode.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeMode.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeMode.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/ThemeOverrides.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeOverrides.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeOverrides.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeOverrides.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/ThemePreset.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemePreset.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemePreset.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemePreset.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/ThemeResolver.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeResolver.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeResolver.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/ThemeResolver.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Theme/Tokens.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Tokens.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Tokens.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Tokens.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Typography/TypographyTokens.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/TypographyTokens.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/TypographyTokens.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/TypographyTokens.o"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Utilities/Color+Hex.swift" : {
+    "index-unit-output-path" : "/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Color+Hex.o",
+    "llvm-bc" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Color+Hex.bc",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Release-iphonesimulator/DesignKit.build/Objects-normal/arm64/Color+Hex.o"
+  }
+}

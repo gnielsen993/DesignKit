@@ -1,0 +1,23 @@
+{
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKCard.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKCard.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKCard.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKCard.dia",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKCard.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKCard.swiftdeps"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKProgressRing.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKProgressRing.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKProgressRing.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKProgressRing.dia",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKProgressRing.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKProgressRing.swiftdeps"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKSectionHeader.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKSectionHeader.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKSectionHeader.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKSectionHeader.dia",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKSectionHeader.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKSectionHeader.swiftdeps"
+  }
+}

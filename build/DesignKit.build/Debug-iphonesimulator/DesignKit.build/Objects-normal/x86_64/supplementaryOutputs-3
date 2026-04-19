@@ -1,0 +1,23 @@
+{
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Charts/DKChartStyle.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKChartStyle.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKChartStyle.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKChartStyle.dia",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKChartStyle.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKChartStyle.swiftdeps"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKBadge.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKBadge.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKBadge.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKBadge.dia",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKBadge.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKBadge.swiftdeps"
+  },
+  "/Users/gabrielnielsen/Desktop/DesignKit/Sources/DesignKit/Components/DKButton.swift" : {
+    "const-values" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKButton.swiftconstvalues",
+    "dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKButton.d",
+    "diagnostics" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKButton.dia",
+    "object" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKButton.o",
+    "swift-dependencies" : "/Users/gabrielnielsen/Desktop/DesignKit/build/DesignKit.build/Debug-iphonesimulator/DesignKit.build/Objects-normal/x86_64/DKButton.swiftdeps"
+  }
+}

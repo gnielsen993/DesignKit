@@ -25,6 +25,14 @@ public struct Theme {
     }
 
     public static func resolve(preset: ThemePreset, scheme: ColorScheme) -> Theme {
-        Theme(colors: Palette.colors(for: preset, scheme: scheme), charts: Palette.charts(for: preset))
+        ThemeResolver.resolve(preset: preset, scheme: scheme, overrides: nil)
+    }
+
+    public static func resolve(
+        preset: ThemePreset,
+        scheme: ColorScheme,
+        overrides: ThemeOverrides?
+    ) -> Theme {
+        ThemeResolver.resolve(preset: preset, scheme: scheme, overrides: overrides)
     }
 }
