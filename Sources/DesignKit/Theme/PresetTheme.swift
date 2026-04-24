@@ -74,7 +74,14 @@ public enum PresetCatalog {
         .roseDawn,
         .sage,
         .serika,
+        .matcha,
+        .arctic,
+        // Feminine / warm
         .bubblegum,
+        .sakura,
+        .roseGold,
+        .lavender,
+        .coral,
         // Dark-leaning
         .charcoal,
         .nord,
@@ -83,10 +90,12 @@ public enum PresetCatalog {
         .forestNight,
         .midnight,
         .oxblood,
+        .ember,
         // Showcase (out-there combos)
         .ghostOrchid,
         .voltage,
-        .frostlime
+        .frostlime,
+        .vaporwave
     ]
 
     public static func theme(for preset: ThemePreset) -> PresetTheme {
@@ -489,5 +498,165 @@ private extension PresetTheme {
             textPrimary: Color(hex: "#FFE4ED")
         ),
         preferredScheme: .light
+    )
+
+    // MARK: - Feminine / warm extensions
+
+    /// Cherry blossom — delicate pink on soft blush.
+    static let sakura = PresetTheme(
+        id: "sakura",
+        displayName: "Sakura",
+        light: PresetAnchors(
+            background: Color(hex: "#FFF5F7"),
+            surface: Color(hex: "#FFFAFB"),
+            accent: Color(hex: "#D6587E"),
+            textPrimary: Color(hex: "#4A1023")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#1C1015"),
+            surface: Color(hex: "#271620"),
+            accent: Color(hex: "#F9A8B8"),
+            textPrimary: Color(hex: "#FFE6EC")
+        ),
+        preferredScheme: .light
+    )
+
+    /// Rose Gold — luxe metallic pink-gold on warm cream.
+    static let roseGold = PresetTheme(
+        id: "roseGold",
+        displayName: "Rose Gold",
+        light: PresetAnchors(
+            background: Color(hex: "#FBF0EA"),
+            surface: Color(hex: "#FFF7F3"),
+            accent: Color(hex: "#B76E79"),
+            textPrimary: Color(hex: "#3E1F1A")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#1A100E"),
+            surface: Color(hex: "#261913"),
+            accent: Color(hex: "#E8A9A4"),
+            textPrimary: Color(hex: "#F6E4DE")
+        ),
+        preferredScheme: .light
+    )
+
+    /// Lavender Mist — soft violet on lilac-white.
+    static let lavender = PresetTheme(
+        id: "lavender",
+        displayName: "Lavender",
+        light: PresetAnchors(
+            background: Color(hex: "#F4F0FB"),
+            surface: Color(hex: "#FBF8FF"),
+            accent: Color(hex: "#8B5CF6"),
+            textPrimary: Color(hex: "#2E1B4B")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#140F20"),
+            surface: Color(hex: "#1D1830"),
+            accent: Color(hex: "#C4B5FD"),
+            textPrimary: Color(hex: "#EDE9FE")
+        ),
+        preferredScheme: .light
+    )
+
+    /// Coral Reef — warm coral/salmon on peach-cream.
+    static let coral = PresetTheme(
+        id: "coral",
+        displayName: "Coral",
+        light: PresetAnchors(
+            background: Color(hex: "#FFF2EE"),
+            surface: Color(hex: "#FFF8F5"),
+            accent: Color(hex: "#F97361"),
+            textPrimary: Color(hex: "#4A1A12")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#1A0F0B"),
+            surface: Color(hex: "#251612"),
+            accent: Color(hex: "#FB9A8A"),
+            textPrimary: Color(hex: "#FFE2DA")
+        ),
+        preferredScheme: .light
+    )
+
+    // MARK: - Bold / cool extensions
+
+    /// Ember — glowing orange on deep char. Masculine-bold.
+    static let ember = PresetTheme(
+        id: "ember",
+        displayName: "Ember",
+        light: PresetAnchors(
+            background: Color(hex: "#FBF2E9"),
+            surface: Color(hex: "#FFF8F0"),
+            accent: Color(hex: "#D54A13"),
+            textPrimary: Color(hex: "#2B1108")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#110907"),
+            surface: Color(hex: "#1D0F0A"),
+            accent: Color(hex: "#FB923C"),
+            textPrimary: Color(hex: "#FEE9D6")
+        ),
+        preferredScheme: .dark
+    )
+
+    /// Arctic — icy cyan on pure snow. Cold, clean, clinical.
+    static let arctic = PresetTheme(
+        id: "arctic",
+        displayName: "Arctic",
+        light: PresetAnchors(
+            background: Color(hex: "#F0F9FC"),
+            surface: Color(hex: "#F9FDFE"),
+            accent: Color(hex: "#0891B2"),
+            textPrimary: Color(hex: "#082F3A")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#081317"),
+            surface: Color(hex: "#0F1D22"),
+            accent: Color(hex: "#67E8F9"),
+            textPrimary: Color(hex: "#CFFAFE")
+        ),
+        preferredScheme: .light
+    )
+
+    /// Matcha — muted green tea on bone. Calm, grounded, zen.
+    static let matcha = PresetTheme(
+        id: "matcha",
+        displayName: "Matcha",
+        light: PresetAnchors(
+            background: Color(hex: "#F3F4E9"),
+            surface: Color(hex: "#F9FAF1"),
+            accent: Color(hex: "#7A8C4C"),
+            textPrimary: Color(hex: "#2A2E1A")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#101308"),
+            surface: Color(hex: "#191D10"),
+            accent: Color(hex: "#B8CB78"),
+            textPrimary: Color(hex: "#E7EBDA")
+        ),
+        preferredScheme: .light
+    )
+
+    /// Vaporwave — magenta + cyan on deep violet. Retro showcase.
+    static let vaporwave = PresetTheme(
+        id: "vaporwave",
+        displayName: "Vaporwave",
+        light: PresetAnchors(
+            background: Color(hex: "#F5EEFB"),
+            surface: Color(hex: "#FBF6FF"),
+            accent: Color(hex: "#D946EF"),
+            textPrimary: Color(hex: "#2A0945")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#10062A"),
+            surface: Color(hex: "#1A0B3D"),
+            accent: Color(hex: "#F472B6"),
+            textPrimary: Color(hex: "#E0F2FE"),
+            customChartColors: [
+                Color(hex: "#F472B6"), Color(hex: "#38BDF8"), Color(hex: "#A78BFA"),
+                Color(hex: "#FB923C"), Color(hex: "#34D399"), Color(hex: "#FBBF24")
+            ]
+        ),
+        preferredScheme: .dark
     )
 }

@@ -27,6 +27,16 @@ public enum ThemePreset: String, CaseIterable, Codable, Identifiable {
     case voltage
     case frostlime
     case bubblegum
+    case vaporwave
+    // Feminine / warm
+    case sakura
+    case roseGold
+    case lavender
+    case coral
+    // Bold / cool
+    case ember
+    case arctic
+    case matcha
 
     public var id: String { rawValue }
 
