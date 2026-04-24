@@ -74,6 +74,7 @@ public enum PresetCatalog {
         .roseDawn,
         .sage,
         .serika,
+        .bubblegum,
         // Dark-leaning
         .charcoal,
         .nord,
@@ -81,7 +82,11 @@ public enum PresetCatalog {
         .gruvbox,
         .forestNight,
         .midnight,
-        .oxblood
+        .oxblood,
+        // Showcase (out-there combos)
+        .ghostOrchid,
+        .voltage,
+        .frostlime
     ]
 
     public static func theme(for preset: ThemePreset) -> PresetTheme {
@@ -406,5 +411,83 @@ private extension PresetTheme {
             textPrimary: Color(hex: "#F6E4E4")
         ),
         preferredScheme: .dark
+    )
+
+    // MARK: - Showcase presets (intentionally loud — demonstrate DesignKit range)
+
+    /// Hot magenta/orchid on a deep plum-black. Dark, dramatic, very not-luxury.
+    static let ghostOrchid = PresetTheme(
+        id: "ghostOrchid",
+        displayName: "Ghost Orchid",
+        light: PresetAnchors(
+            background: Color(hex: "#F7EEF6"),
+            surface: Color(hex: "#FDF6FC"),
+            accent: Color(hex: "#C026D3"),
+            textPrimary: Color(hex: "#2E0A30")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#120A1A"),
+            surface: Color(hex: "#1C1028"),
+            accent: Color(hex: "#E879F9"),
+            textPrimary: Color(hex: "#F3E8FF")
+        ),
+        preferredScheme: .dark
+    )
+
+    /// Acid-yellow electric accent on violet-black. Pure energy.
+    static let voltage = PresetTheme(
+        id: "voltage",
+        displayName: "Voltage",
+        light: PresetAnchors(
+            background: Color(hex: "#F4F0FA"),
+            surface: Color(hex: "#FBF7FF"),
+            accent: Color(hex: "#7C3AED"),
+            textPrimary: Color(hex: "#1B0A3E")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#0B0820"),
+            surface: Color(hex: "#14102D"),
+            accent: Color(hex: "#FACC15"),
+            textPrimary: Color(hex: "#EDE9FE")
+        ),
+        preferredScheme: .dark
+    )
+
+    /// Mint/lime on near-black. DesignKit's answer to MT's frozen-llama vibe.
+    static let frostlime = PresetTheme(
+        id: "frostlime",
+        displayName: "Frostlime",
+        light: PresetAnchors(
+            background: Color(hex: "#EFFBF4"),
+            surface: Color(hex: "#F7FEFA"),
+            accent: Color(hex: "#059669"),
+            textPrimary: Color(hex: "#052E1B")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#06110C"),
+            surface: Color(hex: "#0B1B14"),
+            accent: Color(hex: "#86EFAC"),
+            textPrimary: Color(hex: "#D1FAE5")
+        ),
+        preferredScheme: .dark
+    )
+
+    /// Hot pink on pastel cream — loud, playful, and unapologetically light.
+    static let bubblegum = PresetTheme(
+        id: "bubblegum",
+        displayName: "Bubblegum",
+        light: PresetAnchors(
+            background: Color(hex: "#FFF1F5"),
+            surface: Color(hex: "#FFF8FA"),
+            accent: Color(hex: "#EC4899"),
+            textPrimary: Color(hex: "#500724")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#1A0C12"),
+            surface: Color(hex: "#25121B"),
+            accent: Color(hex: "#F472B6"),
+            textPrimary: Color(hex: "#FFE4ED")
+        ),
+        preferredScheme: .light
     )
 }

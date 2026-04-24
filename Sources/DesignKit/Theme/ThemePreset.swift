@@ -22,6 +22,11 @@ public enum ThemePreset: String, CaseIterable, Codable, Identifiable {
     case forestNight
     case midnight
     case oxblood
+    // Showcase (loud by design)
+    case ghostOrchid
+    case voltage
+    case frostlime
+    case bubblegum
 
     public var id: String { rawValue }
 
