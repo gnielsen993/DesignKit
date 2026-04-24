@@ -507,7 +507,7 @@ private extension PresetTheme {
         preferredScheme: .dark
     )
 
-    /// Mint/lime on near-black. DesignKit's answer to MT's frozen-llama vibe.
+    /// Mint/lime on near-black. Icy electric pop.
     static let frostlime = PresetTheme(
         id: "frostlime",
         displayName: "Frostlime",

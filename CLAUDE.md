@@ -34,7 +34,7 @@ Projects:
 - Theme identity: Balanced Luxury is the default mood (forest/navy/maroon/walnut/stone)
   - Light: warm cream / neutral off-white backgrounds
   - Dark: charcoal / deep neutral backgrounds
-  - Expanded catalog (MonkeyType-style) ships curated presets beyond the luxury five
+  - Expanded catalog ships 34 curated presets across 6 categories beyond the luxury five
     (cream, paper, sand, roseDawn, sage, serika, charcoal, nord, dracula, gruvbox,
     forestNight, midnight, oxblood). Add new presets via `PresetCatalog.all` in DesignKit.
   - Custom palettes are user-driven via `ThemeManager.overrides` (primary / background /

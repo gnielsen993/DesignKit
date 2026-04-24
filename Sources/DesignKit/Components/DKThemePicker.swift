@@ -1,10 +1,11 @@
 import SwiftUI
 
-/// MonkeyType-style theme picker with lifestyle-feel chips.
+/// Full theme picker with lifestyle-feel chips.
 /// Segmented `Presets | Custom`. Presets tab = category-grouped chip grid
 /// where each chip previews in its preset's own palette (bg + surface card +
 /// accent dot + text color). Custom tab = 4 color wells (Primary /
-/// Background / Surface / Text) with per-row reset.
+/// Background / Surface / Text) with per-row reset. Saved custom themes
+/// appear as a "My Themes" section at the top of the grid.
 public struct DKThemePicker: View {
     @ObservedObject private var themeManager: ThemeManager
     private let theme: Theme
