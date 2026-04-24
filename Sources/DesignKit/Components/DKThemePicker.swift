@@ -9,15 +9,25 @@ public struct DKThemePicker: View {
     @ObservedObject private var themeManager: ThemeManager
     private let theme: Theme
     private let scheme: ColorScheme
+    private let catalog: [PresetTheme]
+    private let maxGridHeight: CGFloat?
 
     @State private var tab: Tab = .presets
 
     private enum Tab: Hashable { case presets, custom }
 
-    public init(themeManager: ThemeManager, theme: Theme, scheme: ColorScheme) {
+    public init(
+        themeManager: ThemeManager,
+        theme: Theme,
+        scheme: ColorScheme,
+        catalog: [PresetTheme] = PresetCatalog.all,
+        maxGridHeight: CGFloat? = 260
+    ) {
         self.themeManager = themeManager
         self.theme = theme
         self.scheme = scheme
+        self.catalog = catalog
+        self.maxGridHeight = maxGridHeight
         _tab = State(initialValue: themeManager.hasCustomOverrides ? .custom : .presets)
     }
 
@@ -46,13 +56,13 @@ public struct DKThemePicker: View {
 
         return ScrollView {
             LazyVGrid(columns: columns, spacing: theme.spacing.s) {
-                ForEach(PresetCatalog.all) { preset in
+                ForEach(catalog) { preset in
                     presetChip(preset)
                 }
             }
             .padding(.vertical, 2)
         }
-        .frame(maxHeight: 260)
+        .frame(maxHeight: maxGridHeight)
     }
 
     private func presetChip(_ preset: PresetTheme) -> some View {

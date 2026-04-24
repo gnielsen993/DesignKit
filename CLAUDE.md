@@ -39,6 +39,13 @@ Projects:
     forestNight, midnight, oxblood). Add new presets via `PresetCatalog.all` in DesignKit.
   - Custom palettes are user-driven via `ThemeManager.overrides` (primary / background /
     surface / text anchors). Apps MUST NOT hardcode colors — always read tokens.
+- Theme picker UX convention:
+  - Main settings surface stays lightweight — show only `PresetCatalog.core` (the 5
+    luxury swatches) plus a "More themes & custom colors" link.
+  - The link pushes a dedicated nav view that hosts `DKThemePicker(catalog: .all,
+    maxGridHeight: nil)` for the full catalog + Custom tab.
+  - Rationale: forward-facing settings shouldn't feel like a theme gallery. Keep
+    discovery deep, not cramped.
 - “Personality” is achieved by presets, overrides, and layout emphasis, not random styling.
 
 ---

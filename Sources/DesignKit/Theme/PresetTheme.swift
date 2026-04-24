@@ -55,21 +55,26 @@ public struct PresetTheme: Identifiable, Sendable {
 }
 
 public enum PresetCatalog {
-    public static let all: [PresetTheme] = [
-        // Originals (anchors chosen to match prior visual output).
+    /// The five Balanced Luxury presets — forward-facing defaults for apps that
+    /// want a compact picker. Use `.all` to expose the full catalog in an
+    /// "explore more" surface.
+    public static let core: [PresetTheme] = [
         .forestEntry,
         .navyEntry,
         .maroonEntry,
         .walnutEntry,
-        .stoneEntry,
-        // New light-leaning
+        .stoneEntry
+    ]
+
+    public static let all: [PresetTheme] = core + [
+        // Light-leaning
         .cream,
         .paper,
         .sand,
         .roseDawn,
         .sage,
         .serika,
-        // New dark-leaning
+        // Dark-leaning
         .charcoal,
         .nord,
         .dracula,
@@ -81,6 +86,10 @@ public enum PresetCatalog {
 
     public static func theme(for preset: ThemePreset) -> PresetTheme {
         all.first(where: { $0.id == preset.rawValue }) ?? .forestEntry
+    }
+
+    public static func isCore(_ preset: ThemePreset) -> Bool {
+        core.contains(where: { $0.id == preset.rawValue })
     }
 }
 
