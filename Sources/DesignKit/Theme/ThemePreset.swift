@@ -37,6 +37,11 @@ public enum ThemePreset: String, CaseIterable, Codable, Identifiable {
     case ember
     case arctic
     case matcha
+    // Bright (saturated-bg showcase)
+    case barbie
+    case lemonade
+    case mintChip
+    case poolside
 
     public var id: String { rawValue }
 

@@ -22,9 +22,33 @@ public struct PresetAnchors: Sendable {
     }
 }
 
+public enum PresetCategory: String, CaseIterable, Sendable {
+    case classic
+    case soft
+    case sweet
+    case bright
+    case moody
+    case loud
+
+    public var displayName: String {
+        switch self {
+        case .classic: "Classic"
+        case .soft:    "Soft"
+        case .sweet:   "Sweet"
+        case .bright:  "Bright"
+        case .moody:   "Moody"
+        case .loud:    "Loud"
+        }
+    }
+
+    /// Order presets render in the grouped picker.
+    public static let displayOrder: [PresetCategory] = [.classic, .sweet, .bright, .soft, .moody, .loud]
+}
+
 public struct PresetTheme: Identifiable, Sendable {
     public let id: String
     public let displayName: String
+    public let category: PresetCategory
     public let light: PresetAnchors
     public let dark: PresetAnchors
     public let preferredScheme: ColorScheme?
@@ -32,12 +56,14 @@ public struct PresetTheme: Identifiable, Sendable {
     public init(
         id: String,
         displayName: String,
+        category: PresetCategory,
         light: PresetAnchors,
         dark: PresetAnchors,
         preferredScheme: ColorScheme? = nil
     ) {
         self.id = id
         self.displayName = displayName
+        self.category = category
         self.light = light
         self.dark = dark
         self.preferredScheme = preferredScheme
@@ -47,10 +73,26 @@ public struct PresetTheme: Identifiable, Sendable {
         scheme == .dark ? dark : light
     }
 
-    /// Three-dot swatch shown in the picker chip (accent, surface, textPrimary).
+    /// Scheme this preset should render as in chip previews. Falls back to
+    /// the passed scheme when the preset has no preferred mode.
+    public func previewScheme(fallback: ColorScheme) -> ColorScheme {
+        preferredScheme ?? fallback
+    }
+
+    /// Three-dot swatch shown in legacy chip rendering.
     public func swatch(for scheme: ColorScheme) -> (Color, Color, Color) {
         let a = anchors(for: scheme)
         return (a.accent, a.surface, a.textPrimary)
+    }
+}
+
+public extension Array where Element == PresetTheme {
+    /// Preserves `PresetCategory.displayOrder`. Empty categories omitted.
+    func groupedByCategory() -> [(PresetCategory, [PresetTheme])] {
+        PresetCategory.displayOrder.compactMap { cat in
+            let list = filter { $0.category == cat }
+            return list.isEmpty ? nil : (cat, list)
+        }
     }
 }
 
@@ -67,35 +109,16 @@ public enum PresetCatalog {
     ]
 
     public static let all: [PresetTheme] = core + [
-        // Light-leaning
-        .cream,
-        .paper,
-        .sand,
-        .roseDawn,
-        .sage,
-        .serika,
-        .matcha,
-        .arctic,
-        // Feminine / warm
-        .bubblegum,
-        .sakura,
-        .roseGold,
-        .lavender,
-        .coral,
-        // Dark-leaning
-        .charcoal,
-        .nord,
-        .dracula,
-        .gruvbox,
-        .forestNight,
-        .midnight,
-        .oxblood,
-        .ember,
-        // Showcase (out-there combos)
-        .ghostOrchid,
-        .voltage,
-        .frostlime,
-        .vaporwave
+        // Sweet (pink/warm light)
+        .bubblegum, .sakura, .roseGold, .lavender, .coral,
+        // Bright (saturated backgrounds — new, showcase)
+        .barbie, .lemonade, .mintChip, .poolside,
+        // Soft (neutrals, pastels, muted)
+        .cream, .paper, .sand, .roseDawn, .sage, .serika, .matcha, .arctic,
+        // Moody (dark character)
+        .charcoal, .nord, .dracula, .gruvbox, .forestNight, .midnight, .oxblood,
+        // Loud (out-there combos)
+        .ghostOrchid, .voltage, .frostlime, .vaporwave, .ember
     ]
 
     public static func theme(for preset: ThemePreset) -> PresetTheme {
@@ -119,6 +142,7 @@ private extension PresetTheme {
     static let forestEntry = PresetTheme(
         id: "forest",
         displayName: "Forest",
+        category: .classic,
         light: PresetAnchors(
             background: legacyLightBG, surface: legacyLightSurface,
             accent: Color(hex: "#0F766E"), textPrimary: legacyLightText,
@@ -134,6 +158,7 @@ private extension PresetTheme {
     static let navyEntry = PresetTheme(
         id: "navy",
         displayName: "Navy",
+        category: .classic,
         light: PresetAnchors(
             background: legacyLightBG, surface: legacyLightSurface,
             accent: Color(hex: "#2563EB"), textPrimary: legacyLightText,
@@ -149,6 +174,7 @@ private extension PresetTheme {
     static let maroonEntry = PresetTheme(
         id: "maroon",
         displayName: "Maroon",
+        category: .classic,
         light: PresetAnchors(
             background: legacyLightBG, surface: legacyLightSurface,
             accent: Color(hex: "#BE123C"), textPrimary: legacyLightText,
@@ -164,6 +190,7 @@ private extension PresetTheme {
     static let walnutEntry = PresetTheme(
         id: "walnut",
         displayName: "Walnut",
+        category: .classic,
         light: PresetAnchors(
             background: legacyLightBG, surface: legacyLightSurface,
             accent: Color(hex: "#B45309"), textPrimary: legacyLightText,
@@ -179,6 +206,7 @@ private extension PresetTheme {
     static let stoneEntry = PresetTheme(
         id: "stone",
         displayName: "Stone",
+        category: .classic,
         light: PresetAnchors(
             background: legacyLightBG, surface: legacyLightSurface,
             accent: Color(hex: "#475569"), textPrimary: legacyLightText,
@@ -196,6 +224,7 @@ private extension PresetTheme {
     static let cream = PresetTheme(
         id: "cream",
         displayName: "Cream",
+        category: .soft,
         light: PresetAnchors(
             background: Color(hex: "#F4ECD8"),
             surface: Color(hex: "#FAF3E0"),
@@ -214,6 +243,7 @@ private extension PresetTheme {
     static let paper = PresetTheme(
         id: "paper",
         displayName: "Paper",
+        category: .soft,
         light: PresetAnchors(
             background: Color(hex: "#FFFFFF"),
             surface: Color(hex: "#F7F7F7"),
@@ -231,6 +261,7 @@ private extension PresetTheme {
     static let sand = PresetTheme(
         id: "sand",
         displayName: "Sand",
+        category: .soft,
         light: PresetAnchors(
             background: Color(hex: "#EDE3D2"),
             surface: Color(hex: "#F6EEDF"),
@@ -249,6 +280,7 @@ private extension PresetTheme {
     static let roseDawn = PresetTheme(
         id: "roseDawn",
         displayName: "Rose Dawn",
+        category: .sweet,
         light: PresetAnchors(
             background: Color(hex: "#FAF4ED"),
             surface: Color(hex: "#FFFAF3"),
@@ -267,6 +299,7 @@ private extension PresetTheme {
     static let sage = PresetTheme(
         id: "sage",
         displayName: "Sage",
+        category: .soft,
         light: PresetAnchors(
             background: Color(hex: "#E7EBE3"),
             surface: Color(hex: "#F2F4EE"),
@@ -284,6 +317,7 @@ private extension PresetTheme {
     static let serika = PresetTheme(
         id: "serika",
         displayName: "Serika",
+        category: .soft,
         light: PresetAnchors(
             background: Color(hex: "#E1E1E3"),
             surface: Color(hex: "#F4F4F6"),
@@ -301,6 +335,7 @@ private extension PresetTheme {
     static let charcoal = PresetTheme(
         id: "charcoal",
         displayName: "Charcoal",
+        category: .moody,
         light: PresetAnchors(
             background: Color(hex: "#F3F4F6"),
             surface: Color(hex: "#FFFFFF"),
@@ -318,6 +353,7 @@ private extension PresetTheme {
     static let nord = PresetTheme(
         id: "nord",
         displayName: "Nord",
+        category: .moody,
         light: PresetAnchors(
             background: Color(hex: "#ECEFF4"),
             surface: Color(hex: "#E5E9F0"),
@@ -336,6 +372,7 @@ private extension PresetTheme {
     static let dracula = PresetTheme(
         id: "dracula",
         displayName: "Dracula",
+        category: .moody,
         light: PresetAnchors(
             background: Color(hex: "#F5F3FB"),
             surface: Color(hex: "#FFFFFF"),
@@ -354,6 +391,7 @@ private extension PresetTheme {
     static let gruvbox = PresetTheme(
         id: "gruvbox",
         displayName: "Gruvbox",
+        category: .moody,
         light: PresetAnchors(
             background: Color(hex: "#FBF1C7"),
             surface: Color(hex: "#F2E5BC"),
@@ -371,6 +409,7 @@ private extension PresetTheme {
     static let forestNight = PresetTheme(
         id: "forestNight",
         displayName: "Forest Night",
+        category: .moody,
         light: PresetAnchors(
             background: Color(hex: "#E6EDE3"),
             surface: Color(hex: "#F2F6EF"),
@@ -389,6 +428,7 @@ private extension PresetTheme {
     static let midnight = PresetTheme(
         id: "midnight",
         displayName: "Midnight",
+        category: .moody,
         light: PresetAnchors(
             background: Color(hex: "#EAF0F6"),
             surface: Color(hex: "#F3F7FB"),
@@ -407,6 +447,7 @@ private extension PresetTheme {
     static let oxblood = PresetTheme(
         id: "oxblood",
         displayName: "Oxblood",
+        category: .moody,
         light: PresetAnchors(
             background: Color(hex: "#F6ECEC"),
             surface: Color(hex: "#FBF4F4"),
@@ -428,6 +469,7 @@ private extension PresetTheme {
     static let ghostOrchid = PresetTheme(
         id: "ghostOrchid",
         displayName: "Ghost Orchid",
+        category: .loud,
         light: PresetAnchors(
             background: Color(hex: "#F7EEF6"),
             surface: Color(hex: "#FDF6FC"),
@@ -447,6 +489,7 @@ private extension PresetTheme {
     static let voltage = PresetTheme(
         id: "voltage",
         displayName: "Voltage",
+        category: .loud,
         light: PresetAnchors(
             background: Color(hex: "#F4F0FA"),
             surface: Color(hex: "#FBF7FF"),
@@ -466,6 +509,7 @@ private extension PresetTheme {
     static let frostlime = PresetTheme(
         id: "frostlime",
         displayName: "Frostlime",
+        category: .loud,
         light: PresetAnchors(
             background: Color(hex: "#EFFBF4"),
             surface: Color(hex: "#F7FEFA"),
@@ -485,6 +529,7 @@ private extension PresetTheme {
     static let bubblegum = PresetTheme(
         id: "bubblegum",
         displayName: "Bubblegum",
+        category: .sweet,
         light: PresetAnchors(
             background: Color(hex: "#FFF1F5"),
             surface: Color(hex: "#FFF8FA"),
@@ -506,6 +551,7 @@ private extension PresetTheme {
     static let sakura = PresetTheme(
         id: "sakura",
         displayName: "Sakura",
+        category: .sweet,
         light: PresetAnchors(
             background: Color(hex: "#FFF5F7"),
             surface: Color(hex: "#FFFAFB"),
@@ -525,6 +571,7 @@ private extension PresetTheme {
     static let roseGold = PresetTheme(
         id: "roseGold",
         displayName: "Rose Gold",
+        category: .sweet,
         light: PresetAnchors(
             background: Color(hex: "#FBF0EA"),
             surface: Color(hex: "#FFF7F3"),
@@ -544,6 +591,7 @@ private extension PresetTheme {
     static let lavender = PresetTheme(
         id: "lavender",
         displayName: "Lavender",
+        category: .sweet,
         light: PresetAnchors(
             background: Color(hex: "#F4F0FB"),
             surface: Color(hex: "#FBF8FF"),
@@ -563,6 +611,7 @@ private extension PresetTheme {
     static let coral = PresetTheme(
         id: "coral",
         displayName: "Coral",
+        category: .sweet,
         light: PresetAnchors(
             background: Color(hex: "#FFF2EE"),
             surface: Color(hex: "#FFF8F5"),
@@ -584,6 +633,7 @@ private extension PresetTheme {
     static let ember = PresetTheme(
         id: "ember",
         displayName: "Ember",
+        category: .loud,
         light: PresetAnchors(
             background: Color(hex: "#FBF2E9"),
             surface: Color(hex: "#FFF8F0"),
@@ -603,6 +653,7 @@ private extension PresetTheme {
     static let arctic = PresetTheme(
         id: "arctic",
         displayName: "Arctic",
+        category: .soft,
         light: PresetAnchors(
             background: Color(hex: "#F0F9FC"),
             surface: Color(hex: "#F9FDFE"),
@@ -622,6 +673,7 @@ private extension PresetTheme {
     static let matcha = PresetTheme(
         id: "matcha",
         displayName: "Matcha",
+        category: .soft,
         light: PresetAnchors(
             background: Color(hex: "#F3F4E9"),
             surface: Color(hex: "#F9FAF1"),
@@ -641,6 +693,7 @@ private extension PresetTheme {
     static let vaporwave = PresetTheme(
         id: "vaporwave",
         displayName: "Vaporwave",
+        category: .loud,
         light: PresetAnchors(
             background: Color(hex: "#F5EEFB"),
             surface: Color(hex: "#FBF6FF"),
@@ -658,5 +711,92 @@ private extension PresetTheme {
             ]
         ),
         preferredScheme: .dark
+    )
+
+    // MARK: - Bright (saturated background — the "I'd wear this" showcase)
+    //
+    // Unlike Soft/Sweet presets (tinted near-white bg), Bright presets use the
+    // saturated color AS the background. Surface = lighter tinted card so
+    // content stays readable. Dark variants invert: desaturated bg, accent
+    // reappears as pop.
+
+    /// Hot pink bg, blush cards, wine accent. Maximum Barbie energy.
+    static let barbie = PresetTheme(
+        id: "barbie",
+        displayName: "Barbie",
+        category: .bright,
+        light: PresetAnchors(
+            background: Color(hex: "#F472B6"),
+            surface: Color(hex: "#FBCFE8"),
+            accent: Color(hex: "#831843"),
+            textPrimary: Color(hex: "#3D0E28")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#4A0C2A"),
+            surface: Color(hex: "#5E1638"),
+            accent: Color(hex: "#F9A8D4"),
+            textPrimary: Color(hex: "#FDD5E8")
+        ),
+        preferredScheme: .light
+    )
+
+    /// Saturated lemon yellow bg, plum accent. Summer-picnic loud.
+    static let lemonade = PresetTheme(
+        id: "lemonade",
+        displayName: "Lemonade",
+        category: .bright,
+        light: PresetAnchors(
+            background: Color(hex: "#FDE047"),
+            surface: Color(hex: "#FFF7CC"),
+            accent: Color(hex: "#7E22CE"),
+            textPrimary: Color(hex: "#422006")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#3F2D00"),
+            surface: Color(hex: "#52400B"),
+            accent: Color(hex: "#FDE047"),
+            textPrimary: Color(hex: "#FFF4B3")
+        ),
+        preferredScheme: .light
+    )
+
+    /// Bright mint bg, pale surface, deep forest accent. Gelato-shop bright.
+    static let mintChip = PresetTheme(
+        id: "mintChip",
+        displayName: "Mint Chip",
+        category: .bright,
+        light: PresetAnchors(
+            background: Color(hex: "#6EE7B7"),
+            surface: Color(hex: "#D1FAE5"),
+            accent: Color(hex: "#065F46"),
+            textPrimary: Color(hex: "#042F1A")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#0A3D2D"),
+            surface: Color(hex: "#125540"),
+            accent: Color(hex: "#6EE7B7"),
+            textPrimary: Color(hex: "#D1FAE5")
+        ),
+        preferredScheme: .light
+    )
+
+    /// Bright cyan bg, paler cards, deep teal accent. Saltwater pool vibe.
+    static let poolside = PresetTheme(
+        id: "poolside",
+        displayName: "Poolside",
+        category: .bright,
+        light: PresetAnchors(
+            background: Color(hex: "#67E8F9"),
+            surface: Color(hex: "#CFFAFE"),
+            accent: Color(hex: "#0C4A6E"),
+            textPrimary: Color(hex: "#083344")
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#083344"),
+            surface: Color(hex: "#0F4759"),
+            accent: Color(hex: "#67E8F9"),
+            textPrimary: Color(hex: "#CFFAFE")
+        ),
+        preferredScheme: .light
     )
 }

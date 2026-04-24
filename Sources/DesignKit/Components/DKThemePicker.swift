@@ -1,16 +1,17 @@
 import SwiftUI
 
-/// Compact MonkeyType-style theme picker.
-/// Segmented `Presets | Custom`. Presets tab = 2-column scrollable chip grid.
-/// Custom tab = 4 color wells (Primary / Background / Surface / Text).
-/// Designed to slot into a `DKCard` without blowing out vertical space —
-/// chip grid is capped at ~240pt and scrolls internally.
+/// MonkeyType-style theme picker with lifestyle-feel chips.
+/// Segmented `Presets | Custom`. Presets tab = category-grouped chip grid
+/// where each chip previews in its preset's own palette (bg + surface card +
+/// accent dot + text color). Custom tab = 4 color wells (Primary /
+/// Background / Surface / Text) with per-row reset.
 public struct DKThemePicker: View {
     @ObservedObject private var themeManager: ThemeManager
     private let theme: Theme
     private let scheme: ColorScheme
     private let catalog: [PresetTheme]
     private let maxGridHeight: CGFloat?
+    private let grouped: Bool
 
     @State private var tab: Tab = .presets
 
@@ -21,13 +22,15 @@ public struct DKThemePicker: View {
         theme: Theme,
         scheme: ColorScheme,
         catalog: [PresetTheme] = PresetCatalog.all,
-        maxGridHeight: CGFloat? = 260
+        maxGridHeight: CGFloat? = 260,
+        grouped: Bool = true
     ) {
         self.themeManager = themeManager
         self.theme = theme
         self.scheme = scheme
         self.catalog = catalog
         self.maxGridHeight = maxGridHeight
+        self.grouped = grouped
         _tab = State(initialValue: themeManager.hasCustomOverrides ? .custom : .presets)
     }
 
@@ -48,66 +51,108 @@ public struct DKThemePicker: View {
 
     // MARK: - Presets
 
-    private var presetsGrid: some View {
-        let columns = [
+    private var gridColumns: [GridItem] {
+        [
             GridItem(.flexible(), spacing: theme.spacing.s),
             GridItem(.flexible(), spacing: theme.spacing.s)
         ]
-
-        return ScrollView {
-            LazyVGrid(columns: columns, spacing: theme.spacing.s) {
-                ForEach(catalog) { preset in
-                    presetChip(preset)
-                }
-            }
-            .padding(.vertical, 2)
-        }
-        .frame(maxHeight: maxGridHeight)
     }
 
+    @ViewBuilder
+    private var presetsGrid: some View {
+        if grouped {
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: theme.spacing.m) {
+                    ForEach(catalog.groupedByCategory(), id: \.0) { category, list in
+                        sectionHeader(category)
+                        LazyVGrid(columns: gridColumns, spacing: theme.spacing.s) {
+                            ForEach(list) { preset in
+                                presetChip(preset)
+                            }
+                        }
+                    }
+                }
+                .padding(.vertical, 2)
+            }
+            .frame(maxHeight: maxGridHeight)
+        } else {
+            ScrollView {
+                LazyVGrid(columns: gridColumns, spacing: theme.spacing.s) {
+                    ForEach(catalog) { preset in
+                        presetChip(preset)
+                    }
+                }
+                .padding(.vertical, 2)
+            }
+            .frame(maxHeight: maxGridHeight)
+        }
+    }
+
+    private func sectionHeader(_ category: PresetCategory) -> some View {
+        Text(category.displayName.uppercased())
+            .font(theme.typography.caption.weight(.bold))
+            .tracking(0.8)
+            .foregroundStyle(theme.colors.textTertiary)
+            .padding(.top, 2)
+    }
+
+    /// Lifestyle chip: entire chip background = preset's background. A tiny
+    /// "surface card" rectangle + accent dot + preset name render on top,
+    /// all using the preset's own tokens so the chip reads like a mini
+    /// app-icon preview, not a config row.
     private func presetChip(_ preset: PresetTheme) -> some View {
+        let previewScheme = preset.previewScheme(fallback: scheme)
+        let a = preset.anchors(for: previewScheme)
         let isSelected = themeManager.preset.rawValue == preset.id && !themeManager.hasCustomOverrides
-        let swatch = preset.swatch(for: scheme)
 
         return Button {
             selectPreset(preset)
         } label: {
-            HStack(spacing: theme.spacing.xs) {
-                swatchDots(swatch)
-                Text(preset.displayName)
-                    .font(theme.typography.caption.weight(.medium))
-                    .foregroundStyle(theme.colors.textPrimary)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.85)
-                Spacer(minLength: 0)
-            }
-            .padding(.horizontal, theme.spacing.s)
-            .frame(height: 38)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(
+            ZStack(alignment: .topLeading) {
+                // Background
                 RoundedRectangle(cornerRadius: theme.radii.chip, style: .continuous)
-                    .fill(theme.colors.surface)
-            )
+                    .fill(a.background)
+
+                // Mini surface "card" preview
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(a.surface)
+                    .frame(width: 30, height: 12)
+                    .padding(.top, 9)
+                    .padding(.leading, 10)
+
+                // Name + accent dot
+                HStack(spacing: 6) {
+                    Text(preset.displayName)
+                        .font(theme.typography.caption.weight(.semibold))
+                        .foregroundStyle(a.textPrimary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                    Spacer(minLength: 4)
+                    Circle()
+                        .fill(a.accent)
+                        .frame(width: 10, height: 10)
+                }
+                .padding(.horizontal, 10)
+                .padding(.top, 30)
+            }
+            .frame(height: 54)
+            .frame(maxWidth: .infinity)
             .overlay(
                 RoundedRectangle(cornerRadius: theme.radii.chip, style: .continuous)
                     .strokeBorder(
-                        isSelected ? theme.colors.accentPrimary : theme.colors.border,
-                        lineWidth: isSelected ? 2 : 1
+                        isSelected ? theme.colors.accentPrimary : theme.colors.border.opacity(0.6),
+                        lineWidth: isSelected ? 2.5 : 0.5
                     )
+            )
+            .shadow(
+                color: isSelected ? theme.colors.accentPrimary.opacity(0.2) : .black.opacity(0.03),
+                radius: isSelected ? 6 : 2,
+                x: 0,
+                y: 1
             )
         }
         .buttonStyle(.plain)
         .accessibilityLabel("\(preset.displayName)\(isSelected ? ", selected" : "")")
-    }
-
-    private func swatchDots(_ swatch: (Color, Color, Color)) -> some View {
-        HStack(spacing: 3) {
-            Circle().fill(swatch.0).frame(width: 10, height: 10)
-            Circle().fill(swatch.1)
-                .overlay(Circle().strokeBorder(theme.colors.border, lineWidth: 0.5))
-                .frame(width: 10, height: 10)
-            Circle().fill(swatch.2).frame(width: 10, height: 10)
-        }
     }
 
     private func selectPreset(_ preset: PresetTheme) {
