@@ -201,7 +201,10 @@ final class DesignKitTests: XCTestCase {
         assertColorEqual(resolved.colors.textPrimary, Color(hex: "#14532D"))
         assertColorEqual(resolved.colors.background, base.colors.background)
         assertColorEqual(resolved.charts.chart3, Color(hex: "#0E7490"))
-        assertColorEqual(resolved.charts.chart1, base.charts.chart1)
+        // With accent overridden, chart palette re-derives from the new accent —
+        // chart1 is the accent itself. Base preset's hardcoded chart colors are
+        // dropped so the chart palette matches the user's chosen accent.
+        assertColorEqual(resolved.charts.chart1, Color(hex: "#4C1D95"))
         XCTAssertEqual(resolved.charts.gridlineOpacity, 0.32, accuracy: 0.0001)
         XCTAssertEqual(resolved.charts.axisLabelOpacity, base.charts.axisLabelOpacity, accuracy: 0.0001)
         XCTAssertEqual(resolved.spacing.xs, 6, accuracy: 0.0001)
