@@ -201,6 +201,22 @@ public enum ThemeBackupCodecError: Error {
     case colorEncodingUnsupported
 }
 
+public struct CustomThemePayload: Codable {
+    public var id: UUID
+    public var name: String
+    public var basePresetID: String
+    public var overrides: ThemeOverridesPayload
+    public var createdAt: Date
+
+    public init(id: UUID, name: String, basePresetID: String, overrides: ThemeOverridesPayload, createdAt: Date) {
+        self.id = id
+        self.name = name
+        self.basePresetID = basePresetID
+        self.overrides = overrides
+        self.createdAt = createdAt
+    }
+}
+
 public enum ThemeBackupCodec {
     public static func makeDocument(from configuration: ThemeBackupConfiguration) throws -> ThemeBackupDocument {
         ThemeBackupDocument(
@@ -239,6 +255,30 @@ public enum ThemeBackupCodec {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
         return encoder
+    }
+
+    // MARK: - CustomTheme bridges
+
+    public static func payload(from custom: CustomTheme) throws -> CustomThemePayload {
+        let overridesPayload = try payload(from: custom.overrides) ?? ThemeOverridesPayload()
+        return CustomThemePayload(
+            id: custom.id,
+            name: custom.name,
+            basePresetID: custom.basePresetID,
+            overrides: overridesPayload,
+            createdAt: custom.createdAt
+        )
+    }
+
+    public static func customTheme(from payload: CustomThemePayload) throws -> CustomTheme {
+        let overrides = try overrides(from: payload.overrides) ?? ThemeOverrides()
+        return CustomTheme(
+            id: payload.id,
+            name: payload.name,
+            basePresetID: payload.basePresetID,
+            overrides: overrides,
+            createdAt: payload.createdAt
+        )
     }
 
     static func payload(from overrides: ThemeOverrides?) throws -> ThemeOverridesPayload? {

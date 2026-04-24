@@ -23,6 +23,7 @@ public struct PresetAnchors: Sendable {
 }
 
 public enum PresetCategory: String, CaseIterable, Sendable {
+    case mine
     case classic
     case soft
     case sweet
@@ -32,6 +33,7 @@ public enum PresetCategory: String, CaseIterable, Sendable {
 
     public var displayName: String {
         switch self {
+        case .mine:    "My Themes"
         case .classic: "Classic"
         case .soft:    "Soft"
         case .sweet:   "Sweet"
@@ -42,7 +44,7 @@ public enum PresetCategory: String, CaseIterable, Sendable {
     }
 
     /// Order presets render in the grouped picker.
-    public static let displayOrder: [PresetCategory] = [.classic, .sweet, .bright, .soft, .moody, .loud]
+    public static let displayOrder: [PresetCategory] = [.mine, .classic, .sweet, .bright, .soft, .moody, .loud]
 }
 
 public struct PresetTheme: Identifiable, Sendable {

@@ -14,6 +14,10 @@ public struct DKThemePicker: View {
     private let grouped: Bool
 
     @State private var tab: Tab = .presets
+    @State private var savePromptShown = false
+    @State private var saveNameDraft = ""
+    @State private var renameTarget: CustomTheme? = nil
+    @State private var renameDraft = ""
 
     private enum Tab: Hashable { case presets, custom }
 
@@ -47,6 +51,37 @@ public struct DKThemePicker: View {
             case .custom: customPanel
             }
         }
+        .alert("Save this theme", isPresented: $savePromptShown) {
+            TextField("Theme name", text: $saveNameDraft)
+            Button("Save") {
+                themeManager.saveCurrentAsCustom(name: saveNameDraft)
+                saveNameDraft = ""
+            }
+            .disabled(saveNameDraft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            Button("Cancel", role: .cancel) {
+                saveNameDraft = ""
+            }
+        } message: {
+            Text("Give your custom theme a name so you can come back to it.")
+        }
+        .alert("Rename theme", isPresented: Binding(
+            get: { renameTarget != nil },
+            set: { if !$0 { renameTarget = nil } }
+        )) {
+            TextField("Theme name", text: $renameDraft)
+            Button("Save") {
+                if let target = renameTarget {
+                    themeManager.renameCustomTheme(id: target.id, to: renameDraft)
+                }
+                renameTarget = nil
+                renameDraft = ""
+            }
+            .disabled(renameDraft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            Button("Cancel", role: .cancel) {
+                renameTarget = nil
+                renameDraft = ""
+            }
+        }
     }
 
     // MARK: - Presets
@@ -63,6 +98,14 @@ public struct DKThemePicker: View {
         if grouped {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: theme.spacing.m) {
+                    if !themeManager.customThemes.isEmpty {
+                        sectionHeader(.mine)
+                        LazyVGrid(columns: gridColumns, spacing: theme.spacing.s) {
+                            ForEach(themeManager.customThemes) { custom in
+                                customChip(custom)
+                            }
+                        }
+                    }
                     ForEach(catalog.groupedByCategory(), id: \.0) { category, list in
                         sectionHeader(category)
                         LazyVGrid(columns: gridColumns, spacing: theme.spacing.s) {
@@ -86,6 +129,79 @@ public struct DKThemePicker: View {
             }
             .frame(maxHeight: maxGridHeight)
         }
+    }
+
+    /// Chip for a saved custom theme — same visual as a preset chip, with a
+    /// long-press context menu for Rename/Delete.
+    private func customChip(_ custom: CustomTheme) -> some View {
+        let preset = custom.asPresetTheme()
+        let previewScheme = preset.previewScheme(fallback: scheme)
+        let a = preset.anchors(for: previewScheme)
+        let isSelected = themeManager.activeCustomThemeID == custom.id
+
+        return Button {
+            themeManager.applyCustomTheme(custom)
+        } label: {
+            ZStack(alignment: .topLeading) {
+                RoundedRectangle(cornerRadius: theme.radii.chip, style: .continuous)
+                    .fill(a.background)
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(a.surface)
+                    .frame(width: 30, height: 12)
+                    .padding(.top, 9)
+                    .padding(.leading, 10)
+                // Star marker (top-right) so customs look distinct
+                Image(systemName: "star.fill")
+                    .font(.system(size: 9))
+                    .foregroundStyle(a.accent)
+                    .padding(.top, 9)
+                    .padding(.trailing, 10)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                HStack(spacing: 6) {
+                    Text(preset.displayName)
+                        .font(theme.typography.caption.weight(.semibold))
+                        .foregroundStyle(a.textPrimary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
+                    Spacer(minLength: 4)
+                    Circle()
+                        .fill(a.accent)
+                        .frame(width: 10, height: 10)
+                }
+                .padding(.horizontal, 10)
+                .padding(.top, 30)
+            }
+            .frame(height: 54)
+            .frame(maxWidth: .infinity)
+            .overlay(
+                RoundedRectangle(cornerRadius: theme.radii.chip, style: .continuous)
+                    .strokeBorder(
+                        isSelected ? theme.colors.accentPrimary : theme.colors.border.opacity(0.6),
+                        lineWidth: isSelected ? 2.5 : 0.5
+                    )
+            )
+            .shadow(
+                color: isSelected ? theme.colors.accentPrimary.opacity(0.2) : .black.opacity(0.03),
+                radius: isSelected ? 6 : 2,
+                x: 0,
+                y: 1
+            )
+        }
+        .buttonStyle(.plain)
+        .contextMenu {
+            Button {
+                renameDraft = custom.name
+                renameTarget = custom
+            } label: {
+                Label("Rename", systemImage: "pencil")
+            }
+            Button(role: .destructive) {
+                themeManager.deleteCustomTheme(id: custom.id)
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+        }
+        .accessibilityLabel("\(custom.name), saved theme\(isSelected ? ", selected" : "")")
     }
 
     private func sectionHeader(_ category: PresetCategory) -> some View {
@@ -203,16 +319,43 @@ public struct DKThemePicker: View {
             }
 
             if themeManager.hasCustomOverrides {
-                Button {
-                    themeManager.resetOverrides()
-                } label: {
-                    Text("Reset to \(PresetCatalog.theme(for: themeManager.preset).displayName)")
-                        .font(theme.typography.caption)
+                HStack(spacing: theme.spacing.s) {
+                    Button {
+                        saveNameDraft = ""
+                        savePromptShown = true
+                    } label: {
+                        HStack(spacing: 6) {
+                            Image(systemName: "bookmark.fill")
+                                .font(.system(size: 12, weight: .semibold))
+                            Text("Save as theme")
+                                .font(theme.typography.caption.weight(.semibold))
+                        }
                         .foregroundStyle(theme.colors.accentPrimary)
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 6)
+                        .padding(.vertical, 8)
+                        .background(
+                            RoundedRectangle(cornerRadius: theme.radii.button, style: .continuous)
+                                .fill(theme.colors.highlight)
+                        )
+                    }
+                    .buttonStyle(.plain)
+
+                    Button {
+                        themeManager.resetOverrides()
+                    } label: {
+                        Text("Reset")
+                            .font(theme.typography.caption)
+                            .foregroundStyle(theme.colors.textSecondary)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 8)
+                            .background(
+                                RoundedRectangle(cornerRadius: theme.radii.button, style: .continuous)
+                                    .strokeBorder(theme.colors.border, lineWidth: 1)
+                            )
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
+                .padding(.top, 2)
             }
         }
     }

@@ -7,11 +7,15 @@ public protocol ThemeStorage {
     func savePreset(_ preset: ThemePreset)
     func loadOverrides() -> ThemeOverrides?
     func saveOverrides(_ overrides: ThemeOverrides?)
+    func loadCustomThemes() -> [CustomTheme]
+    func saveCustomThemes(_ customs: [CustomTheme])
 }
 
 public extension ThemeStorage {
     func loadOverrides() -> ThemeOverrides? { nil }
     func saveOverrides(_ overrides: ThemeOverrides?) {}
+    func loadCustomThemes() -> [CustomTheme] { [] }
+    func saveCustomThemes(_ customs: [CustomTheme]) {}
 }
 
 public final class UserDefaultsThemeStorage: ThemeStorage {
@@ -19,17 +23,20 @@ public final class UserDefaultsThemeStorage: ThemeStorage {
     private let modeKey: String
     private let presetKey: String
     private let overridesKey: String
+    private let customsKey: String
 
     public init(
         defaults: UserDefaults = .standard,
         modeKey: String = "designkit.theme.mode",
         presetKey: String = "designkit.theme.preset",
-        overridesKey: String = "designkit.theme.overrides"
+        overridesKey: String = "designkit.theme.overrides",
+        customsKey: String = "designkit.theme.customs"
     ) {
         self.defaults = defaults
         self.modeKey = modeKey
         self.presetKey = presetKey
         self.overridesKey = overridesKey
+        self.customsKey = customsKey
     }
 
     public func loadMode() -> ThemeMode {
@@ -79,6 +86,26 @@ public final class UserDefaultsThemeStorage: ThemeStorage {
             }
         } catch {
             defaults.removeObject(forKey: overridesKey)
+        }
+    }
+
+    public func loadCustomThemes() -> [CustomTheme] {
+        guard let data = defaults.data(forKey: customsKey) else { return [] }
+        do {
+            let payloads = try JSONDecoder().decode([CustomThemePayload].self, from: data)
+            return try payloads.map { try ThemeBackupCodec.customTheme(from: $0) }
+        } catch {
+            return []
+        }
+    }
+
+    public func saveCustomThemes(_ customs: [CustomTheme]) {
+        do {
+            let payloads = try customs.map { try ThemeBackupCodec.payload(from: $0) }
+            let data = try JSONEncoder().encode(payloads)
+            defaults.set(data, forKey: customsKey)
+        } catch {
+            defaults.removeObject(forKey: customsKey)
         }
     }
 }
