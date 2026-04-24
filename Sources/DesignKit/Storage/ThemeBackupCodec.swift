@@ -241,7 +241,7 @@ public enum ThemeBackupCodec {
         return encoder
     }
 
-    private static func payload(from overrides: ThemeOverrides?) throws -> ThemeOverridesPayload? {
+    static func payload(from overrides: ThemeOverrides?) throws -> ThemeOverridesPayload? {
         guard let overrides else { return nil }
 
         let colorsPayload: ThemeColorOverridesPayload? = try {
@@ -325,7 +325,7 @@ public enum ThemeBackupCodec {
         )
     }
 
-    private static func overrides(from payload: ThemeOverridesPayload?) throws -> ThemeOverrides? {
+    static func overrides(from payload: ThemeOverridesPayload?) throws -> ThemeOverrides? {
         guard let payload else { return nil }
 
         let colors = try payload.colors.map { colorsPayload in

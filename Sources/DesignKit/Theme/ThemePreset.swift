@@ -1,21 +1,36 @@
 import Foundation
+import SwiftUI
 
 public enum ThemePreset: String, CaseIterable, Codable, Identifiable {
+    // Originals
     case forest
     case navy
     case maroon
     case walnut
     case stone
+    // Expanded catalog
+    case cream
+    case paper
+    case sand
+    case roseDawn
+    case sage
+    case serika
+    case charcoal
+    case nord
+    case dracula
+    case gruvbox
+    case forestNight
+    case midnight
+    case oxblood
 
     public var id: String { rawValue }
 
     public var displayName: String {
-        switch self {
-        case .forest: "Forest"
-        case .navy: "Navy"
-        case .maroon: "Maroon"
-        case .walnut: "Walnut"
-        case .stone: "Stone"
-        }
+        PresetCatalog.theme(for: self).displayName
+    }
+
+    /// Scheme the preset is designed for. `nil` = preset works in both light/dark; follow system.
+    public var preferredScheme: ColorScheme? {
+        PresetCatalog.theme(for: self).preferredScheme
     }
 }

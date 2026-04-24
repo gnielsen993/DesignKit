@@ -31,11 +31,15 @@ Projects:
 ### Design
 - No hard-coded colors in UI.
 - All UI uses DesignKit semantic tokens.
-- Theme identity: Balanced Luxury
-  - Light: warm cream background
-  - Dark: charcoal background
-  - Accents constrained to: forest, navy, maroon/oxblood, walnut, stone
-- “Personality” is achieved by presets and layout emphasis, not random styling.
+- Theme identity: Balanced Luxury is the default mood (forest/navy/maroon/walnut/stone)
+  - Light: warm cream / neutral off-white backgrounds
+  - Dark: charcoal / deep neutral backgrounds
+  - Expanded catalog (MonkeyType-style) ships curated presets beyond the luxury five
+    (cream, paper, sand, roseDawn, sage, serika, charcoal, nord, dracula, gruvbox,
+    forestNight, midnight, oxblood). Add new presets via `PresetCatalog.all` in DesignKit.
+  - Custom palettes are user-driven via `ThemeManager.overrides` (primary / background /
+    surface / text anchors). Apps MUST NOT hardcode colors — always read tokens.
+- “Personality” is achieved by presets, overrides, and layout emphasis, not random styling.
 
 ---
 
