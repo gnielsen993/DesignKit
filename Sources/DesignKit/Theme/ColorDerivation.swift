@@ -8,16 +8,17 @@ import AppKit
 enum ColorDerivation {
 
     /// Fallback game-number palette for any preset that hasn't declared its
-    /// own. Mirrors the Classic / Forest traditional Minesweeper palette so
+    /// own. Mirrors the Classic / Forest Wong-safe Minesweeper palette so
     /// every resolved theme emits a length-8 Wong-safe palette by default.
+    /// Keep in sync with `PresetTheme.classicGameNumberPalette`.
     static let fallbackGameNumberPalette: [Color] = [
         Color(hex: "#1976D2"),  // 1 = blue
         Color(hex: "#2E7D32"),  // 2 = green
         Color(hex: "#D32F2F"),  // 3 = red
         Color(hex: "#212121"),  // 4 = near-black
-        Color(hex: "#7B1FA2"),  // 5 = purple
+        Color(hex: "#E65100"),  // 5 = deep orange
         Color(hex: "#0097A7"),  // 6 = cyan
-        Color(hex: "#FFC107"),  // 7 = amber
+        Color(hex: "#F9A825"),  // 7 = bright amber
         Color(hex: "#616161")   // 8 = grey
     ]
 

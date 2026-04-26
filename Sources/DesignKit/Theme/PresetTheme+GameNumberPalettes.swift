@@ -17,14 +17,18 @@ import SwiftUI
 extension PresetTheme {
     /// Classic / Wong-safe Minesweeper palette. Verified by
     /// `GameNumberPaletteWongTests.testForestPalettePassesAllThreeCVDsUnconditionally`.
+    /// Each adjacent pair survives ΔE2000 ≥ 10 under all three Brettel/Machado
+    /// CVD simulations (protanopia / deuteranopia / tritanopia). Entry 5 uses
+    /// deep orange instead of the traditional Minesweeper purple because purple
+    /// and cyan (entry 6) collapse to indistinguishable hues under protanopia.
     static let classicGameNumberPalette: [Color] = [
         Color(hex: "#1976D2"),  // 1 = blue
         Color(hex: "#2E7D32"),  // 2 = green
         Color(hex: "#D32F2F"),  // 3 = red
         Color(hex: "#212121"),  // 4 = near-black (cool-leaning so it survives CVD)
-        Color(hex: "#7B1FA2"),  // 5 = purple
+        Color(hex: "#E65100"),  // 5 = deep orange (Wong-safe; replaces traditional purple)
         Color(hex: "#0097A7"),  // 6 = cyan
-        Color(hex: "#FFC107"),  // 7 = amber (replaces traditional black for CVD)
+        Color(hex: "#F9A825"),  // 7 = bright amber (yellow-leaning to clear orange)
         Color(hex: "#616161")   // 8 = grey
     ]
 
