@@ -71,7 +71,9 @@ public struct ThemeColorOverrides {
             danger: danger ?? base.danger,
             fillPressed: fillPressed ?? base.fillPressed,
             fillSelected: fillSelected ?? base.fillSelected,
-            fillDisabled: fillDisabled ?? base.fillDisabled
+            fillDisabled: fillDisabled ?? base.fillDisabled,
+            gameNumberPalette: base.gameNumberPalette,
+            gameNumberPaletteWongSafe: base.gameNumberPaletteWongSafe
         )
     }
 }

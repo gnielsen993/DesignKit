@@ -36,3 +36,18 @@ public struct Theme {
         ThemeResolver.resolve(preset: preset, scheme: scheme, overrides: overrides)
     }
 }
+
+public extension Theme {
+    /// Adjacency-number color for n in 1...8 (THEME-02 + D-13).
+    /// Reads `colors.gameNumberPaletteWongSafe ?? colors.gameNumberPalette` so
+    /// presets that opt into the Wong-safe override (D-15) get it transparently.
+    /// n < 1 clamps to palette[0]; n > 8 clamps to palette[7]; never traps.
+    /// If the resolver hasn't filled a palette yet (transitional state), falls
+    /// back to `colors.textPrimary` so callers never crash.
+    func gameNumber(_ n: Int) -> Color {
+        let palette = colors.gameNumberPaletteWongSafe ?? colors.gameNumberPalette
+        guard !palette.isEmpty else { return colors.textPrimary }
+        let i = max(0, min(palette.count - 1, n - 1))
+        return palette[i]
+    }
+}

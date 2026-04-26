@@ -18,6 +18,17 @@ public struct ThemeColors {
     public let fillSelected: Color
     public let fillDisabled: Color
 
+    /// Per-preset 8-color palette for Minesweeper adjacency numbers 1–8 (THEME-02).
+    /// Length MUST be 8 once resolved through the production resolver path.
+    /// Read via the `Theme.gameNumber(_:)` extension (see `Theme.swift`).
+    public let gameNumberPalette: [Color]
+
+    /// Optional override used when `gameNumberPalette` fails the Wong-palette
+    /// audit on a given preset (D-15). Loud presets that ship a tuned default
+    /// palette but cannot satisfy ΔE thresholds use this to surface a
+    /// CVD-friendly fallback transparently. nil = use `gameNumberPalette`.
+    public let gameNumberPaletteWongSafe: [Color]?
+
     public init(
         background: Color,
         surface: Color,
@@ -34,7 +45,9 @@ public struct ThemeColors {
         danger: Color,
         fillPressed: Color,
         fillSelected: Color,
-        fillDisabled: Color
+        fillDisabled: Color,
+        gameNumberPalette: [Color] = [],
+        gameNumberPaletteWongSafe: [Color]? = nil
     ) {
         self.background = background
         self.surface = surface
@@ -52,6 +65,8 @@ public struct ThemeColors {
         self.fillPressed = fillPressed
         self.fillSelected = fillSelected
         self.fillDisabled = fillDisabled
+        self.gameNumberPalette = gameNumberPalette
+        self.gameNumberPaletteWongSafe = gameNumberPaletteWongSafe
     }
 }
 

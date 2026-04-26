@@ -7,18 +7,32 @@ public struct PresetAnchors: Sendable {
     public let textPrimary: Color
     public let customChartColors: [Color]?
 
+    /// Per-preset 8-color palette for Minesweeper adjacency numbers 1–8
+    /// (THEME-02 + D-14). nil = inherit the Classic (forest) traditional
+    /// Minesweeper palette via the resolver fallback.
+    public let gameNumberPalette: [Color]?
+
+    /// Optional Wong-safe override used when `gameNumberPalette` fails the
+    /// CVD audit on a loud preset (D-15). nil = the default palette is the
+    /// Wong-safe palette (Classic) OR no override needed.
+    public let gameNumberPaletteWongSafe: [Color]?
+
     public init(
         background: Color,
         surface: Color,
         accent: Color,
         textPrimary: Color,
-        customChartColors: [Color]? = nil
+        customChartColors: [Color]? = nil,
+        gameNumberPalette: [Color]? = nil,
+        gameNumberPaletteWongSafe: [Color]? = nil
     ) {
         self.background = background
         self.surface = surface
         self.accent = accent
         self.textPrimary = textPrimary
         self.customChartColors = customChartColors
+        self.gameNumberPalette = gameNumberPalette
+        self.gameNumberPaletteWongSafe = gameNumberPaletteWongSafe
     }
 }
 
@@ -141,6 +155,11 @@ private extension PresetTheme {
     static let legacyDarkSurface = Color(hex: "#131313")
     static let legacyDarkText = Color(hex: "#F9FAFB")
 
+    // Game-number palettes (D-14) live in the sibling file
+    // `PresetTheme+GameNumberPalettes.swift` to keep this file under the
+    // 500-line soft cap (CLAUDE.md §8.5). Referenced below by name as
+    // `classicGameNumberPalette`, `bubblegumGameNumberPalette`, etc.
+
     static let forestEntry = PresetTheme(
         id: "forest",
         displayName: "Forest",
@@ -148,12 +167,14 @@ private extension PresetTheme {
         light: PresetAnchors(
             background: legacyLightBG, surface: legacyLightSurface,
             accent: Color(hex: "#0F766E"), textPrimary: legacyLightText,
-            customChartColors: ["#2C5B45", "#4A7E63", "#7D9E64", "#8B6A4C", "#4B6670", "#6E7F86"].map(Color.init(hex:))
+            customChartColors: ["#2C5B45", "#4A7E63", "#7D9E64", "#8B6A4C", "#4B6670", "#6E7F86"].map(Color.init(hex:)),
+            gameNumberPalette: classicGameNumberPalette
         ),
         dark: PresetAnchors(
             background: legacyDarkBG, surface: legacyDarkSurface,
             accent: Color(hex: "#14B8A6"), textPrimary: legacyDarkText,
-            customChartColors: ["#2C5B45", "#4A7E63", "#7D9E64", "#8B6A4C", "#4B6670", "#6E7F86"].map(Color.init(hex:))
+            customChartColors: ["#2C5B45", "#4A7E63", "#7D9E64", "#8B6A4C", "#4B6670", "#6E7F86"].map(Color.init(hex:)),
+            gameNumberPalette: classicGameNumberPalette
         )
     )
 
@@ -231,13 +252,15 @@ private extension PresetTheme {
             background: Color(hex: "#F4ECD8"),
             surface: Color(hex: "#FAF3E0"),
             accent: Color(hex: "#8C5A2B"),
-            textPrimary: Color(hex: "#2B1D0E")
+            textPrimary: Color(hex: "#2B1D0E"),
+            gameNumberPalette: creamGameNumberPalette
         ),
         dark: PresetAnchors(
             background: Color(hex: "#1E1A14"),
             surface: Color(hex: "#2A241B"),
             accent: Color(hex: "#D9A771"),
-            textPrimary: Color(hex: "#F4ECD8")
+            textPrimary: Color(hex: "#F4ECD8"),
+            gameNumberPalette: creamGameNumberPalette
         ),
         preferredScheme: .light
     )
@@ -379,13 +402,17 @@ private extension PresetTheme {
             background: Color(hex: "#F5F3FB"),
             surface: Color(hex: "#FFFFFF"),
             accent: Color(hex: "#6B3FA0"),
-            textPrimary: Color(hex: "#282A36")
+            textPrimary: Color(hex: "#282A36"),
+            gameNumberPalette: draculaGameNumberPalette,
+            gameNumberPaletteWongSafe: classicGameNumberPalette
         ),
         dark: PresetAnchors(
             background: Color(hex: "#282A36"),
             surface: Color(hex: "#343746"),
             accent: Color(hex: "#BD93F9"),
-            textPrimary: Color(hex: "#F8F8F2")
+            textPrimary: Color(hex: "#F8F8F2"),
+            gameNumberPalette: draculaGameNumberPalette,
+            gameNumberPaletteWongSafe: classicGameNumberPalette
         ),
         preferredScheme: .dark
     )
@@ -496,13 +523,17 @@ private extension PresetTheme {
             background: Color(hex: "#F4F0FA"),
             surface: Color(hex: "#FBF7FF"),
             accent: Color(hex: "#7C3AED"),
-            textPrimary: Color(hex: "#1B0A3E")
+            textPrimary: Color(hex: "#1B0A3E"),
+            gameNumberPalette: voltageGameNumberPalette,
+            gameNumberPaletteWongSafe: classicGameNumberPalette
         ),
         dark: PresetAnchors(
             background: Color(hex: "#0B0820"),
             surface: Color(hex: "#14102D"),
             accent: Color(hex: "#FACC15"),
-            textPrimary: Color(hex: "#EDE9FE")
+            textPrimary: Color(hex: "#EDE9FE"),
+            gameNumberPalette: voltageGameNumberPalette,
+            gameNumberPaletteWongSafe: classicGameNumberPalette
         ),
         preferredScheme: .dark
     )
@@ -536,13 +567,17 @@ private extension PresetTheme {
             background: Color(hex: "#FFF1F5"),
             surface: Color(hex: "#FFF8FA"),
             accent: Color(hex: "#EC4899"),
-            textPrimary: Color(hex: "#500724")
+            textPrimary: Color(hex: "#500724"),
+            gameNumberPalette: bubblegumGameNumberPalette,
+            gameNumberPaletteWongSafe: classicGameNumberPalette
         ),
         dark: PresetAnchors(
             background: Color(hex: "#1A0C12"),
             surface: Color(hex: "#25121B"),
             accent: Color(hex: "#F472B6"),
-            textPrimary: Color(hex: "#FFE4ED")
+            textPrimary: Color(hex: "#FFE4ED"),
+            gameNumberPalette: bubblegumGameNumberPalette,
+            gameNumberPaletteWongSafe: classicGameNumberPalette
         ),
         preferredScheme: .light
     )
@@ -731,13 +766,17 @@ private extension PresetTheme {
             background: Color(hex: "#F472B6"),
             surface: Color(hex: "#FBCFE8"),
             accent: Color(hex: "#831843"),
-            textPrimary: Color(hex: "#3D0E28")
+            textPrimary: Color(hex: "#3D0E28"),
+            gameNumberPalette: barbieGameNumberPalette,
+            gameNumberPaletteWongSafe: classicGameNumberPalette
         ),
         dark: PresetAnchors(
             background: Color(hex: "#4A0C2A"),
             surface: Color(hex: "#5E1638"),
             accent: Color(hex: "#F9A8D4"),
-            textPrimary: Color(hex: "#FDD5E8")
+            textPrimary: Color(hex: "#FDD5E8"),
+            gameNumberPalette: barbieGameNumberPalette,
+            gameNumberPaletteWongSafe: classicGameNumberPalette
         ),
         preferredScheme: .light
     )

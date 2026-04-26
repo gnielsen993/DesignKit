@@ -7,6 +7,20 @@ import AppKit
 
 enum ColorDerivation {
 
+    /// Fallback game-number palette for any preset that hasn't declared its
+    /// own. Mirrors the Classic / Forest traditional Minesweeper palette so
+    /// every resolved theme emits a length-8 Wong-safe palette by default.
+    static let fallbackGameNumberPalette: [Color] = [
+        Color(hex: "#1976D2"),  // 1 = blue
+        Color(hex: "#2E7D32"),  // 2 = green
+        Color(hex: "#D32F2F"),  // 3 = red
+        Color(hex: "#212121"),  // 4 = near-black
+        Color(hex: "#7B1FA2"),  // 5 = purple
+        Color(hex: "#0097A7"),  // 6 = cyan
+        Color(hex: "#FFC107"),  // 7 = amber
+        Color(hex: "#616161")   // 8 = grey
+    ]
+
     static func colors(from anchors: PresetAnchors, scheme: ColorScheme) -> ThemeColors {
         let isDark = scheme == .dark
 
@@ -21,6 +35,11 @@ enum ColorDerivation {
         let fillPressed = isDark ? Color.white.opacity(0.07) : Color.black.opacity(0.05)
         let fillSelected = anchors.accent.opacity(isDark ? 0.24 : 0.16)
         let fillDisabled = isDark ? Color.white.opacity(0.14) : Color.black.opacity(0.10)
+
+        // Fallback: any preset that hasn't declared its own palette inherits
+        // the Classic Minesweeper colors so every resolved theme always emits
+        // a length-8 Wong-safe palette (D-15 + D-16).
+        let gameNumberPalette = anchors.gameNumberPalette ?? fallbackGameNumberPalette
 
         return ThemeColors(
             background: anchors.background,
@@ -38,7 +57,9 @@ enum ColorDerivation {
             danger: isDark ? Color(hex: "#EF4444") : Color(hex: "#DC2626"),
             fillPressed: fillPressed,
             fillSelected: fillSelected,
-            fillDisabled: fillDisabled
+            fillDisabled: fillDisabled,
+            gameNumberPalette: gameNumberPalette,
+            gameNumberPaletteWongSafe: anchors.gameNumberPaletteWongSafe
         )
     }
 
