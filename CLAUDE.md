@@ -132,4 +132,33 @@ Choose:
 - clarity > abstraction
 - TODO hook > overbuilding
 
+---
 
+## 9) Release Log — `docs/releases/v{X.Y.Z}.md`
+
+DesignKit is a Swift Package — no `MARKETING_VERSION`. Per-version
+release notes live in `docs/releases/`, keyed off the **git tag**
+(semver). Mirrors the convention used across the sibling repos
+(GameKit, FitnessTracker, ParkedUp).
+
+**Steps for every significant change (new token / component / public
+API shift / behavior change / fix):**
+1. Identify the in-progress version (next intended git tag).
+2. If `docs/releases/v{version}.md` does not exist, create it from
+   `docs/releases/TEMPLATE.md`.
+3. Append the change under the appropriate section (Summary, API
+   changes, Internal changes, Fixes, Consumer migration notes,
+   Risks/notes).
+4. Keep entries brief and factual.
+5. Land the release-log update **in the same commit as the code
+   change**.
+6. Tag the release commit (`git tag vX.Y.Z`) only after the file is
+   finalized and CI is green; the tag and the file ship together.
+
+Semver: patch = bug fix or internal-only; minor = additive (new
+tokens / components / presets / additive behavior); major = public
+API removed/renamed or default-behavior break.
+
+A new file is opened when the next intended tag changes. Never mutate
+a tagged version's file. Skip the log for self-explanatory or
+doc-only commits.
