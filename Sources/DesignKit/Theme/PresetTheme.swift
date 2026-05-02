@@ -117,6 +117,7 @@ public enum PresetCatalog {
     /// want a compact picker. Use `.all` to expose the full catalog in an
     /// "explore more" surface.
     public static let core: [PresetTheme] = [
+        .classicMutedEntry,
         .forestEntry,
         .navyEntry,
         .maroonEntry,
@@ -159,6 +160,38 @@ private extension PresetTheme {
     // `PresetTheme+GameNumberPalettes.swift` to keep this file under the
     // 500-line soft cap (CLAUDE.md §8.5). Referenced below by name as
     // `classicGameNumberPalette`, `bubblegumGameNumberPalette`, etc.
+
+    /// Classic — "Chrome Diner" restomod. 1950s-arcade design language
+    /// executed cleanly in modern surfaces: cream/parchment background,
+    /// brushed-grey bezel feel on cards, diner-red accent. The "rethink of
+    /// classics" aesthetic — modern layout/spacing/radii preserved (this
+    /// preset only changes colors, never component shape). Game-number
+    /// palette = the Wong-safe Classic palette so adjacency numbers read
+    /// with the traditional 1=blue, 2=green, 3=red ordering.
+    ///
+    /// Light: cream paper bg, white card surfaces, warm-charcoal text,
+    ///        diner-red accent.
+    /// Dark:  deep walnut-leaning bg, slightly elevated card surface, warm
+    ///        cream text, slightly brighter coral accent for legibility.
+    static let classicMutedEntry = PresetTheme(
+        id: "classicMuted",
+        displayName: "Classic",
+        category: .classic,
+        light: PresetAnchors(
+            background: Color(hex: "#F5F1E8"),
+            surface: Color(hex: "#FFFFFF"),
+            accent: Color(hex: "#C0392B"),
+            textPrimary: Color(hex: "#2A2620"),
+            gameNumberPalette: classicGameNumberPalette
+        ),
+        dark: PresetAnchors(
+            background: Color(hex: "#1D1813"),
+            surface: Color(hex: "#262019"),
+            accent: Color(hex: "#E85A4D"),
+            textPrimary: Color(hex: "#F5F1E8"),
+            gameNumberPalette: classicGameNumberPalette
+        )
+    )
 
     static let forestEntry = PresetTheme(
         id: "forest",

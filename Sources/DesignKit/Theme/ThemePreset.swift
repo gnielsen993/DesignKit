@@ -2,6 +2,8 @@ import Foundation
 import SwiftUI
 
 public enum ThemePreset: String, CaseIterable, Codable, Identifiable {
+    // Toned-down classic — quiet greys + muted moss accent.
+    case classicMuted
     // Originals
     case forest
     case navy
