@@ -39,15 +39,34 @@ public struct Theme {
 
 public extension Theme {
     /// Adjacency-number color for n in 1...8 (THEME-02 + D-13).
-    /// Reads `colors.gameNumberPaletteWongSafe ?? colors.gameNumberPalette` so
-    /// presets that opt into the Wong-safe override (D-15) get it transparently.
+    ///
+    /// Prefers the preset's aesthetic `gameNumberPalette`; falls back to
+    /// `gameNumberPaletteWongSafe` only when the aesthetic palette is empty.
     /// n < 1 clamps to palette[0]; n > 8 clamps to palette[7]; never traps.
-    /// If the resolver hasn't filled a palette yet (transitional state), falls
-    /// back to `colors.textPrimary` so callers never crash.
+    /// If neither palette is filled (transitional state), falls back to
+    /// `colors.textPrimary` so callers never crash.
+    ///
+    /// P7 polish: the original D-15 contract had this resolver ALWAYS prefer
+    /// Wong-safe over aesthetic. That broke every dark preset that shipped
+    /// Classic as the Wong-safe override — e.g. Dracula on dark anchors used
+    /// `#212121` for "4", which is near-invisible on the `#343746` dark slate
+    /// surface. The original intent was that Wong-safe would be the runtime
+    /// fallback for users with a CVD accessibility flag enabled, but the
+    /// resolver wired Wong-safe as the unconditional override. There is no
+    /// CVD toggle in Settings (and none planned for v1.0), so the right
+    /// behavior is to use the preset's aesthetic palette — which the preset
+    /// authors tuned for their surface — and treat Wong-safe as a true
+    /// fallback when no aesthetic palette is provided.
     func gameNumber(_ n: Int) -> Color {
-        let palette = colors.gameNumberPaletteWongSafe ?? colors.gameNumberPalette
-        guard !palette.isEmpty else { return colors.textPrimary }
-        let i = max(0, min(palette.count - 1, n - 1))
-        return palette[i]
+        if !colors.gameNumberPalette.isEmpty {
+            let palette = colors.gameNumberPalette
+            let i = max(0, min(palette.count - 1, n - 1))
+            return palette[i]
+        }
+        if let safe = colors.gameNumberPaletteWongSafe, !safe.isEmpty {
+            let i = max(0, min(safe.count - 1, n - 1))
+            return safe[i]
+        }
+        return colors.textPrimary
     }
 }
