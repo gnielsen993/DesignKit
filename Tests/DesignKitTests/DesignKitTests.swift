@@ -150,7 +150,11 @@ final class DesignKitTests: XCTestCase {
         let storage = UserDefaultsThemeStorage(defaults: defaults)
 
         XCTAssertEqual(storage.loadMode(), .system)
-        XCTAssertEqual(storage.loadPreset(), .forest)
+        // ThemeStorage default = `.classicMuted` (the host-overridable Classic
+        // slot) since fd7f8dd. Fallback resolves to whatever the host app
+        // registered via DesignKit.configure(classicPreset:) — neutral grey
+        // when nothing is configured (e.g. in this test).
+        XCTAssertEqual(storage.loadPreset(), .classicMuted)
     }
 
     func testThemeResolverMatchesPaletteWithoutOverrides() {

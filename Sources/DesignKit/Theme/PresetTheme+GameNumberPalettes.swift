@@ -21,7 +21,11 @@ extension PresetTheme {
     /// CVD simulations (protanopia / deuteranopia / tritanopia). Entry 5 uses
     /// deep orange instead of the traditional Minesweeper purple because purple
     /// and cyan (entry 6) collapse to indistinguishable hues under protanopia.
-    static let classicGameNumberPalette: [Color] = [
+    ///
+    /// Public so host-app-owned "Classic" entries (registered via
+    /// `DesignKit.configure(classicPreset:)`) can reuse it as the Wong-safe
+    /// `gameNumberPalette` for their anchors.
+    public static let classicGameNumberPalette: [Color] = [
         Color(hex: "#1976D2"),  // 1 = blue
         Color(hex: "#2E7D32"),  // 2 = green
         Color(hex: "#D32F2F"),  // 3 = red

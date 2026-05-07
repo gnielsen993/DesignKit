@@ -113,19 +113,35 @@ public extension Array where Element == PresetTheme {
 }
 
 public enum PresetCatalog {
-    /// The five Balanced Luxury presets — forward-facing defaults for apps that
-    /// want a compact picker. Use `.all` to expose the full catalog in an
-    /// "explore more" surface.
-    public static let core: [PresetTheme] = [
-        .classicMutedEntry,
-        .forestEntry,
-        .navyEntry,
-        .maroonEntry,
-        .walnutEntry,
-        .stoneEntry
-    ]
+    /// The 6-swatch core picker. Position 0 is the host-app's "Classic" —
+    /// registered via `DesignKit.configure(classicPreset:)` (defaults to a
+    /// neutral grey if the host has not configured). Positions 1–5 are the
+    /// universal classics (Forest / Navy / Maroon / Walnut / Stone) shipped
+    /// by DesignKit for every consumer.
+    public static var core: [PresetTheme] {
+        [
+            DesignKitConfig.classicPreset,
+            .forestEntry,
+            .navyEntry,
+            .maroonEntry,
+            .walnutEntry,
+            .stoneEntry
+        ]
+    }
 
-    public static let all: [PresetTheme] = core + [
+    public static var all: [PresetTheme] { core + nonClassicEntries }
+
+    public static func theme(for preset: ThemePreset) -> PresetTheme {
+        all.first(where: { $0.id == preset.rawValue }) ?? .forestEntry
+    }
+
+    public static func isCore(_ preset: ThemePreset) -> Bool {
+        core.contains(where: { $0.id == preset.rawValue })
+    }
+
+    /// Non-classic entries — Sweet/Bright/Soft/Moody/Loud presets shipped
+    /// by DesignKit for every consumer.
+    private static let nonClassicEntries: [PresetTheme] = [
         // Sweet (pink/warm light)
         .bubblegum, .sakura, .roseGold, .lavender, .coral,
         // Bright (saturated backgrounds — new, showcase)
@@ -137,14 +153,6 @@ public enum PresetCatalog {
         // Loud (out-there combos)
         .ghostOrchid, .voltage, .frostlime, .vaporwave, .ember
     ]
-
-    public static func theme(for preset: ThemePreset) -> PresetTheme {
-        all.first(where: { $0.id == preset.rawValue }) ?? .forestEntry
-    }
-
-    public static func isCore(_ preset: ThemePreset) -> Bool {
-        core.contains(where: { $0.id == preset.rawValue })
-    }
 }
 
 private extension PresetTheme {
@@ -161,37 +169,12 @@ private extension PresetTheme {
     // 500-line soft cap (CLAUDE.md §8.5). Referenced below by name as
     // `classicGameNumberPalette`, `bubblegumGameNumberPalette`, etc.
 
-    /// Classic — "Chrome Diner" restomod. 1950s-arcade design language
-    /// executed cleanly in modern surfaces: cream/parchment background,
-    /// brushed-grey bezel feel on cards, diner-red accent. The "rethink of
-    /// classics" aesthetic — modern layout/spacing/radii preserved (this
-    /// preset only changes colors, never component shape). Game-number
-    /// palette = the Wong-safe Classic palette so adjacency numbers read
-    /// with the traditional 1=blue, 2=green, 3=red ordering.
-    ///
-    /// Light: cream paper bg, white card surfaces, warm-charcoal text,
-    ///        diner-red accent.
-    /// Dark:  deep walnut-leaning bg, slightly elevated card surface, warm
-    ///        cream text, slightly brighter coral accent for legibility.
-    static let classicMutedEntry = PresetTheme(
-        id: "classicMuted",
-        displayName: "Classic",
-        category: .classic,
-        light: PresetAnchors(
-            background: Color(hex: "#F5F1E8"),
-            surface: Color(hex: "#FFFFFF"),
-            accent: Color(hex: "#C0392B"),
-            textPrimary: Color(hex: "#2A2620"),
-            gameNumberPalette: classicGameNumberPalette
-        ),
-        dark: PresetAnchors(
-            background: Color(hex: "#1D1813"),
-            surface: Color(hex: "#262019"),
-            accent: Color(hex: "#E85A4D"),
-            textPrimary: Color(hex: "#F5F1E8"),
-            gameNumberPalette: classicGameNumberPalette
-        )
-    )
+    // The "Classic" entry (id `"classicMuted"`) is host-app-owned —
+    // GameDrawer registers Chrome Diner, FitnessTracker registers its own
+    // teal-on-cream identity, etc. Each consumer wires it via
+    // `DesignKit.configure(classicPreset:)` at App.init. See
+    // `DesignKitConfig.swift` for the registration surface and the neutral
+    // grey fallback used when a consumer has not configured.
 
     static let forestEntry = PresetTheme(
         id: "forest",
