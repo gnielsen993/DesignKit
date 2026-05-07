@@ -79,8 +79,20 @@ public enum DesignKitConfig {
 
 /// Top-level convenience so host apps write `DesignKit.configure(...)` rather
 /// than `DesignKitConfig.configure(...)`.
+///
+/// Note: declaring this enum with the same name as the module shadows the
+/// module name for member access — `DesignKit.ThemeManager` no longer
+/// resolves to the module's `ThemeManager` class. Consumers that need to
+/// disambiguate from a same-named local type must use `DKThemeManager`
+/// (defined below) or define a local typealias.
 public enum DesignKit {
     public static func configure(classicPreset preset: PresetTheme) {
         DesignKitConfig.configure(classicPreset: preset)
     }
 }
+
+/// Disambiguating alias for consumers that define a local `ThemeManager`
+/// (e.g. a wrapper that republishes for SwiftUI). Pre-9d30bab they wrote
+/// `DesignKit.ThemeManager`; the convenience enum above now shadows that
+/// path. Use `DKThemeManager` instead.
+public typealias DKThemeManager = ThemeManager
