@@ -52,7 +52,7 @@ public final class UserDefaultsThemeStorage: ThemeStorage {
 
     public func loadPreset() -> ThemePreset {
         guard let raw = defaults.string(forKey: presetKey), let preset = ThemePreset(rawValue: raw) else {
-            return .classicMuted
+            return DesignKitConfig.firstLaunchDefaultPreset
         }
         return preset
     }

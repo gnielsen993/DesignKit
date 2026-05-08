@@ -23,9 +23,21 @@ import SwiftUI
 
 public enum DesignKitConfig {
     nonisolated(unsafe) private static var _classicPreset: PresetTheme = DesignKitConfig.fallbackClassic
+    nonisolated(unsafe) private static var _showClassicSlot: Bool = true
+    nonisolated(unsafe) private static var _firstLaunchDefaultPreset: ThemePreset = .classicMuted
 
     /// The "Classic" entry shown in the picker — host-app-overridable.
     public static var classicPreset: PresetTheme { _classicPreset }
+
+    /// Whether the picker exposes the "Classic" slot at all. Hosts that
+    /// don't have a brand-flavored Classic identity (FitnessTracker etc.)
+    /// hide it; the picker then leads with Forest/Navy/Maroon/Walnut/Stone.
+    public static var showClassicSlot: Bool { _showClassicSlot }
+
+    /// Preset returned by `UserDefaultsThemeStorage.loadPreset()` when no
+    /// value has been saved yet. Pinned per host so first launch lands on
+    /// the right brand identity.
+    public static var firstLaunchDefaultPreset: ThemePreset { _firstLaunchDefaultPreset }
 
     /// Register the host app's "Classic" identity. Each app calls this at
     /// launch. Re-calling overwrites. Entry must be `category == .classic`
@@ -40,11 +52,24 @@ public enum DesignKitConfig {
             "DesignKit.configure(classicPreset:) — preset id must be \"classicMuted\" to preserve storage compat"
         )
         _classicPreset = preset
+        _showClassicSlot = true
+    }
+
+    /// Hide the Classic picker slot entirely and pin the first-launch
+    /// default to a different preset. For hosts that don't want a "Classic"
+    /// entry at all (FitnessTracker — their identity lives in Forest, the
+    /// Classic slot is GameKit/GameDrawer-specific). Call ONCE in App.init
+    /// before `ThemeManager()` is constructed.
+    public static func disableClassicSlot(firstLaunchDefault: ThemePreset) {
+        _showClassicSlot = false
+        _firstLaunchDefaultPreset = firstLaunchDefault
     }
 
     /// Reset to the neutral fallback. Test-only; do not call from app code.
     public static func _resetForTesting() {
         _classicPreset = DesignKitConfig.fallbackClassic
+        _showClassicSlot = true
+        _firstLaunchDefaultPreset = .classicMuted
     }
 
     // MARK: - Neutral fallback
@@ -88,6 +113,12 @@ public enum DesignKitConfig {
 public enum DesignKit {
     public static func configure(classicPreset preset: PresetTheme) {
         DesignKitConfig.configure(classicPreset: preset)
+    }
+
+    /// Hide the Classic picker slot and pin first-launch default to a
+    /// different preset. For hosts that don't want a "Classic" entry at all.
+    public static func disableClassicSlot(firstLaunchDefault: ThemePreset) {
+        DesignKitConfig.disableClassicSlot(firstLaunchDefault: firstLaunchDefault)
     }
 }
 

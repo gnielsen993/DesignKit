@@ -117,16 +117,20 @@ public enum PresetCatalog {
     /// registered via `DesignKit.configure(classicPreset:)` (defaults to a
     /// neutral grey if the host has not configured). Positions 1–5 are the
     /// universal classics (Forest / Navy / Maroon / Walnut / Stone) shipped
-    /// by DesignKit for every consumer.
+    /// by DesignKit for every consumer. Hosts that don't want a "Classic"
+    /// entry at all (FitnessTracker) call
+    /// `DesignKit.disableClassicSlot(firstLaunchDefault:)` and the slot is
+    /// omitted entirely — the picker leads with Forest.
     public static var core: [PresetTheme] {
-        [
-            DesignKitConfig.classicPreset,
+        let universal: [PresetTheme] = [
             .forestEntry,
             .navyEntry,
             .maroonEntry,
             .walnutEntry,
             .stoneEntry
         ]
+        guard DesignKitConfig.showClassicSlot else { return universal }
+        return [DesignKitConfig.classicPreset] + universal
     }
 
     public static var all: [PresetTheme] { core + nonClassicEntries }
