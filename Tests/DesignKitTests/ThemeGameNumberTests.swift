@@ -7,7 +7,8 @@
 //    - Every audit-set preset emits a length-8 palette via the resolver path
 //    - Resolver path (`Theme.resolve(preset:scheme:)`) is the unit under test —
 //      NOT raw `PresetTheme` declarations (RESEARCH Pitfall 6)
-//    - Wong-safe override takes precedence when set on a preset's anchors
+//    - Aesthetic palette takes precedence; Wong-safe is the empty-palette
+//      fallback (P7 polish inversion — see Theme.gameNumber doc)
 //
 //  XCTest target convention (DesignKitTests uses XCTest, not Swift Testing —
 //  see PATTERNS §"Established pattern: Wong-audit XCTest" critical correction).
@@ -101,9 +102,12 @@ final class ThemeGameNumberTests: XCTestCase {
         )
     }
 
-    func testWongSafeOverrideTakesPrecedenceWhenSet() {
-        // Build a synthetic ThemeColors directly so we can pin both palettes
-        // and verify gameNumber(_:) reads the override path.
+    func testAestheticPaletteTakesPrecedenceOverWongSafe() {
+        // P7 polish inverted the resolver (see Theme.gameNumber doc): the
+        // preset's aesthetic palette wins; Wong-safe is the fallback used
+        // only when the aesthetic palette is empty. Build a synthetic
+        // ThemeColors with both palettes pinned and verify gameNumber(_:)
+        // reads the aesthetic path.
         let primaryPalette = (0..<8).map { Color(red: 0, green: 0, blue: Double($0 + 1) / 8.0) }
         let safePalette = (0..<8).map { Color(red: Double($0 + 1) / 8.0, green: 0, blue: 0) }
         let synthetic = ThemeColors(
@@ -136,11 +140,39 @@ final class ThemeGameNumberTests: XCTestCase {
         guard let got = ColorVisionSimulator.sRGBComponents(of: theme.gameNumber(1)) else {
             return XCTFail("Cannot extract sRGB components")
         }
-        // Override path is the red-channel synthetic palette: n=1 → red > 0,
-        // green ≈ 0, blue ≈ 0.
-        XCTAssertGreaterThan(got.r, 0.0, "Override path should produce non-zero red channel")
-        XCTAssertEqual(got.g, 0.0, accuracy: 0.01, "Override path should have ~0 green")
-        XCTAssertEqual(got.b, 0.0, accuracy: 0.01, "Override path should have ~0 blue")
+        // Aesthetic path is the blue-channel synthetic palette: n=1 →
+        // blue > 0, red ≈ 0, green ≈ 0.
+        XCTAssertGreaterThan(got.b, 0.0, "Aesthetic path should produce non-zero blue channel")
+        XCTAssertEqual(got.r, 0.0, accuracy: 0.01, "Aesthetic path should have ~0 red")
+        XCTAssertEqual(got.g, 0.0, accuracy: 0.01, "Aesthetic path should have ~0 green")
+    }
+
+    func testWongSafeUsedWhenAestheticPaletteEmpty() {
+        // Fallback leg of the same contract: with an empty aesthetic palette,
+        // gameNumber(_:) reads the Wong-safe palette before textPrimary.
+        let safePalette = (0..<8).map { Color(red: Double($0 + 1) / 8.0, green: 0, blue: 0) }
+        let synthetic = ThemeColors(
+            background: .white, surface: .white, surfaceElevated: .white, border: .black,
+            textPrimary: .black, textSecondary: .gray, textTertiary: .gray,
+            accentPrimary: .blue, accentSecondary: .purple, highlight: .yellow,
+            success: .green, warning: .orange, danger: .red,
+            fillPressed: .gray, fillSelected: .blue, fillDisabled: .gray,
+            gameNumberPalette: [],
+            gameNumberPaletteWongSafe: safePalette
+        )
+        let charts = ChartTokens(
+            chart1: .blue, chart2: .green, chart3: .red,
+            chart4: .orange, chart5: .purple, chart6: .yellow,
+            gridlineOpacity: 0.20, axisLabelOpacity: 0.70
+        )
+        let theme = Theme(colors: synthetic, charts: charts)
+
+        guard let got = ColorVisionSimulator.sRGBComponents(of: theme.gameNumber(1)) else {
+            return XCTFail("Cannot extract sRGB components")
+        }
+        XCTAssertGreaterThan(got.r, 0.0, "Wong-safe fallback should produce non-zero red channel")
+        XCTAssertEqual(got.g, 0.0, accuracy: 0.01)
+        XCTAssertEqual(got.b, 0.0, accuracy: 0.01)
     }
 
     func testGameNumberFallsBackToTextPrimaryOnEmptyPalette() {

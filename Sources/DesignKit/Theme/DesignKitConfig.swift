@@ -87,7 +87,7 @@ public enum DesignKitConfig {
         surface: Color(hex: "#141416"),
         accent: Color(hex: "#94A3B8"),
         textPrimary: Color(hex: "#F4F4F5"),
-        gameNumberPalette: PresetTheme.classicGameNumberPalette
+        gameNumberPalette: PresetTheme.classicGameNumberPaletteDark
     )
 
     /// Single neutral grey "Classic" used when host has not registered.

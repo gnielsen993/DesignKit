@@ -22,6 +22,20 @@ enum ColorDerivation {
         Color(hex: "#616161")   // 8 = grey
     ]
 
+    /// Dark-scheme fallback. Keep in sync with
+    /// `PresetTheme.classicGameNumberPaletteDark` — the light fallback's
+    /// near-black "4" and dim grey "8" are illegible on dark surfaces.
+    static let fallbackGameNumberPaletteDark: [Color] = [
+        Color(hex: "#64B5F6"),  // 1 = light blue
+        Color(hex: "#81C784"),  // 2 = light green
+        Color(hex: "#E57373"),  // 3 = light red
+        Color(hex: "#E0E0E0"),  // 4 = near-white
+        Color(hex: "#FFB74D"),  // 5 = light orange
+        Color(hex: "#4DD0E1"),  // 6 = light cyan
+        Color(hex: "#F9A825"),  // 7 = bright amber
+        Color(hex: "#9E9E9E")   // 8 = mid grey
+    ]
+
     static func colors(from anchors: PresetAnchors, scheme: ColorScheme) -> ThemeColors {
         let isDark = scheme == .dark
 
@@ -39,8 +53,10 @@ enum ColorDerivation {
 
         // Fallback: any preset that hasn't declared its own palette inherits
         // the Classic Minesweeper colors so every resolved theme always emits
-        // a length-8 Wong-safe palette (D-15 + D-16).
-        let gameNumberPalette = anchors.gameNumberPalette ?? fallbackGameNumberPalette
+        // a length-8 Wong-safe palette (D-15 + D-16). Scheme-aware — the
+        // light palette's near-black "4" is illegible on dark surfaces.
+        let gameNumberPalette = anchors.gameNumberPalette
+            ?? (isDark ? fallbackGameNumberPaletteDark : fallbackGameNumberPalette)
 
         return ThemeColors(
             background: anchors.background,

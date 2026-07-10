@@ -36,6 +36,27 @@ extension PresetTheme {
         Color(hex: "#616161")   // 8 = grey
     ]
 
+    /// Dark-scheme variant of the Classic palette. Same hue identities,
+    /// lightened for dark surfaces (#26xxxx-class). Entry 4 inverts the
+    /// light palette's near-black lightness anchor to near-white — the
+    /// near-black `#212121` is illegible on any dark surface. Entry 8
+    /// lifts the grey for the same reason. Must satisfy the same Wong
+    /// audit as the light palette (verified by
+    /// `GameNumberPaletteWongTests.testForestPalettePassesAllThreeCVDsInDarkScheme`).
+    ///
+    /// Public for the same reason as `classicGameNumberPalette` — host-app
+    /// Classic entries wire it into their dark anchors.
+    public static let classicGameNumberPaletteDark: [Color] = [
+        Color(hex: "#64B5F6"),  // 1 = light blue
+        Color(hex: "#81C784"),  // 2 = light green
+        Color(hex: "#E57373"),  // 3 = light red
+        Color(hex: "#E0E0E0"),  // 4 = near-white (lightness anchor, inverted from #212121)
+        Color(hex: "#FFB74D"),  // 5 = light orange
+        Color(hex: "#4DD0E1"),  // 6 = light cyan
+        Color(hex: "#F9A825"),  // 7 = bright amber (already dark-legible)
+        Color(hex: "#9E9E9E")   // 8 = mid grey (lifted from #616161)
+    ]
+
     /// Cream — soft warm preset reuses the Classic palette unchanged. The
     /// surface tone is cream-on-white in light mode; classic palette reads
     /// well against it without re-tuning.

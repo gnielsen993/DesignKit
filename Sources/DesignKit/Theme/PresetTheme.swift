@@ -194,7 +194,7 @@ private extension PresetTheme {
             background: legacyDarkBG, surface: legacyDarkSurface,
             accent: Color(hex: "#14B8A6"), textPrimary: legacyDarkText,
             customChartColors: ["#2C5B45", "#4A7E63", "#7D9E64", "#8B6A4C", "#4B6670", "#6E7F86"].map(Color.init(hex:)),
-            gameNumberPalette: classicGameNumberPalette
+            gameNumberPalette: classicGameNumberPaletteDark
         )
     )
 
@@ -280,7 +280,7 @@ private extension PresetTheme {
             surface: Color(hex: "#2A241B"),
             accent: Color(hex: "#D9A771"),
             textPrimary: Color(hex: "#F4ECD8"),
-            gameNumberPalette: creamGameNumberPalette
+            gameNumberPalette: classicGameNumberPaletteDark
         ),
         preferredScheme: .light
     )

@@ -55,8 +55,10 @@ final class GameNumberPaletteWongTests: XCTestCase {
         }
     }
 
-    /// Forest must also pass under dark scheme — the dark anchors share the
-    /// same palette so this is a regression guard if dark anchors ever fork.
+    /// Forest must also pass under dark scheme — the dark anchors ship
+    /// `classicGameNumberPaletteDark` (lightened for dark surfaces; the
+    /// light palette's near-black "4" is illegible there), so this audits
+    /// the dark variant with the same unconditional bar as light.
     func testForestPalettePassesAllThreeCVDsInDarkScheme() {
         let theme = Theme.resolve(preset: .forest, scheme: .dark)
         let palette = effectivePalette(of: theme)
@@ -95,7 +97,16 @@ final class GameNumberPaletteWongTests: XCTestCase {
     /// against a palette that collapses adjacent entries to identical
     /// colors before we even simulate vision deficiency.
     func testForestPaletteAdjacentPairsAreDistinctInsRGB() {
-        let theme = Theme.resolve(preset: .forest, scheme: .light)
+        assertAdjacentPairsDistinctInsRGB(scheme: .light)
+    }
+
+    /// Dark-scheme twin — audits `classicGameNumberPaletteDark`.
+    func testForestDarkPaletteAdjacentPairsAreDistinctInsRGB() {
+        assertAdjacentPairsDistinctInsRGB(scheme: .dark)
+    }
+
+    private func assertAdjacentPairsDistinctInsRGB(scheme: ColorScheme) {
+        let theme = Theme.resolve(preset: .forest, scheme: scheme)
         let palette = effectivePalette(of: theme)
         for i in 0..<(palette.count - 1) {
             guard
@@ -108,7 +119,7 @@ final class GameNumberPaletteWongTests: XCTestCase {
             let dE = ColorVisionSimulator.deltaE2000(a, b)
             XCTAssertGreaterThanOrEqual(
                 dE, Self.deltaThreshold,
-                "Forest sRGB adjacent pair \(i + 1)/\(i + 2) ΔE \(dE) below threshold"
+                "Forest [\(scheme)] sRGB adjacent pair \(i + 1)/\(i + 2) ΔE \(dE) below threshold"
             )
         }
     }
