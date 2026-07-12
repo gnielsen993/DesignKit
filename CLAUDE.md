@@ -162,3 +162,16 @@ API removed/renamed or default-behavior break.
 A new file is opened when the next intended tag changes. Never mutate
 a tagged version's file. Skip the log for self-explanatory or
 doc-only commits.
+
+---
+
+## 10) Brain (Obsidian knowledge base — Claude only)
+
+Durable knowledge from this package goes in my Obsidian brain under the
+[[DesignKit]] MOC, tagged `designkit`. Global conventions — format, when to
+read/write — are in `~/.claude/CLAUDE.md`.
+
+Worth capturing here: token-system design decisions and their rationale,
+component API decisions, preset/palette decisions, consumer-migration
+learnings. This knowledge radiates into every ecosystem app — when a note is
+really about how an *app* consumes DesignKit, link it from that app's MOC too.
