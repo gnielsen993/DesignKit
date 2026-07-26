@@ -8,13 +8,21 @@ public struct Theme {
     public let motion: MotionTokens
     public let charts: ChartTokens
 
+    /// Catalogue accent palette — one of `CataloguePalette.muted` /
+    /// `.bright` selected by the active preset's `category`. Consumers
+    /// read via `catalogueColor(_:)` (below). Defaults to the bright
+    /// palette so themes constructed without a resolver (tests, ad-hoc
+    /// previews) still have a populated catalogue.
+    public let cataloguePalette: [Color]
+
     public init(
         colors: ThemeColors,
         typography: TypographyTokens = TypographyTokens(),
         spacing: SpacingTokens = SpacingTokens(),
         radii: RadiusTokens = RadiusTokens(),
         motion: MotionTokens = MotionTokens(),
-        charts: ChartTokens
+        charts: ChartTokens,
+        cataloguePalette: [Color] = CataloguePalette.bright
     ) {
         self.colors = colors
         self.typography = typography
@@ -22,6 +30,7 @@ public struct Theme {
         self.radii = radii
         self.motion = motion
         self.charts = charts
+        self.cataloguePalette = cataloguePalette
     }
 
     public static func resolve(preset: ThemePreset, scheme: ColorScheme) -> Theme {
@@ -68,5 +77,23 @@ public extension Theme {
             return safe[i]
         }
         return colors.textPrimary
+    }
+
+    /// Catalogue accent for a game tile / drawer / shelf entry. `slot` is a
+    /// 0-indexed position into the active preset's catalogue palette
+    /// (`cataloguePalette`) — populated by `ThemeResolver` based on the
+    /// preset's `category` (muted vs bright, see `CataloguePalette`).
+    ///
+    /// Slot < 0 clamps to 0; slot ≥ palette.count wraps modulo so a
+    /// growing game catalogue stays renderable even when it outgrows a
+    /// preset's palette length. Falls back to the preset's
+    /// `gameNumberPalette` if `cataloguePalette` is empty (transitional /
+    /// test-only theme constructions).
+    func catalogueColor(_ slot: Int) -> Color {
+        if !cataloguePalette.isEmpty {
+            let i = ((slot % cataloguePalette.count) + cataloguePalette.count) % cataloguePalette.count
+            return cataloguePalette[i]
+        }
+        return gameNumber(slot + 1)
     }
 }

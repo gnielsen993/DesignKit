@@ -55,4 +55,12 @@ public enum ThemePreset: String, CaseIterable, Codable, Identifiable {
     public var preferredScheme: ColorScheme? {
         PresetCatalog.theme(for: self).preferredScheme
     }
+
+    /// Mood bucket driving which catalogue accent palette this preset
+    /// uses (see `CataloguePalette`). Derived from the preset's existing
+    /// `PresetCategory` (Classic/Sweet/Bright/Soft/Moody/Loud) so the
+    /// picker grouping stays the single source of truth.
+    public var paletteMood: PaletteMood {
+        PresetCatalog.theme(for: self).category.paletteMood
+    }
 }
