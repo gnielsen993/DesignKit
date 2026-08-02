@@ -12,7 +12,8 @@ Projects in the ecosystem:
 - DesignKit (shared Swift Package)
 - HabitTracker (local-first habit app)
 - FitnessTracker (local-first workout app)
-- PantryPlanner (smart pantry + meal planner app)
+- GameKit (ad-free classic logic games, ships as GameDrawer) — a live consumer, previously missing here
+- PantryPlanner (smart pantry + meal planner app) — **dormant**, an untouched early prototype in `../DietTracker`; not a shipping app and not a second consumer for the 2-app extraction bar
 
 ---
 

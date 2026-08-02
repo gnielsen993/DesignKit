@@ -10,9 +10,14 @@ A set of local-first SwiftUI apps that feel like one premium ecosystem, powered 
 
 Projects:
 - DesignKit (shared design system package)
-- HabitTracker (binary habits + optional weekly goals + widgets)
-- FitnessTracker (split logging + muscle coverage + visuals)
-- PantryPlanner (pantry forecasting + meal planner + cost awareness)
+- HabitTracker (binary habits + optional weekly goals + widgets) — live consumer
+- FitnessTracker (split logging + muscle coverage + visuals) — live consumer, ships as **Stack**
+- GameKit (ad-free classic logic games) — live consumer, ships as **GameDrawer**; previously missing from this list
+- PantryPlanner (pantry forecasting + meal planner + cost awareness) — **dormant, not a shipping app.** Lives in the `../DietTracker` repo (remote `PantryTracker`; all three names refer to the same thing). ~28 Swift files, 2 commits, untouched since 2026-02. It imports DesignKit but must not be counted as a second consumer when judging whether something has earned extraction into this package.
+
+> The extraction bar ("used in 2+ apps") means 2+ of the **live** consumers above.
+> ClockKit (DayDial) and TripTracker deliberately do not depend on DesignKit and
+> are never evidence for it.
 
 ---
 
