@@ -94,41 +94,53 @@ public struct DKThemePicker: View {
         ]
     }
 
+    /// `maxGridHeight == nil` means **the host is scrolling**, so the picker
+    /// must not add a scroll view of its own.
+    ///
+    /// It used to wrap unconditionally, so passing nil produced an unbounded
+    /// `ScrollView` nested inside the host's on the same axis. It never scrolled
+    /// independently — it had no height to scroll within — but it still competed
+    /// for the gesture, which is what made the full theme explorer feel long and
+    /// draggy on a screen that was already scrolling.
     @ViewBuilder
     private var presetsGrid: some View {
-        if grouped {
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: theme.spacing.m) {
-                    if !themeManager.customThemes.isEmpty {
-                        sectionHeader(.mine)
-                        LazyVGrid(columns: gridColumns, spacing: theme.spacing.s) {
-                            ForEach(themeManager.customThemes) { custom in
-                                customChip(custom)
-                            }
-                        }
-                    }
-                    ForEach(catalog.groupedByCategory(), id: \.0) { category, list in
-                        sectionHeader(category)
-                        LazyVGrid(columns: gridColumns, spacing: theme.spacing.s) {
-                            ForEach(list) { preset in
-                                presetChip(preset)
-                            }
-                        }
-                    }
-                }
-                .padding(.vertical, 2)
-            }
-            .frame(maxHeight: maxGridHeight)
+        if let maxGridHeight {
+            ScrollView { gridContent }
+                .frame(maxHeight: maxGridHeight)
         } else {
-            ScrollView {
-                LazyVGrid(columns: gridColumns, spacing: theme.spacing.s) {
-                    ForEach(catalog) { preset in
-                        presetChip(preset)
+            gridContent
+        }
+    }
+
+    @ViewBuilder
+    private var gridContent: some View {
+        if grouped {
+            LazyVStack(alignment: .leading, spacing: theme.spacing.m) {
+                if !themeManager.customThemes.isEmpty {
+                    sectionHeader(.mine)
+                    LazyVGrid(columns: gridColumns, spacing: theme.spacing.s) {
+                        ForEach(themeManager.customThemes) { custom in
+                            customChip(custom)
+                        }
                     }
                 }
-                .padding(.vertical, 2)
+                ForEach(catalog.groupedByCategory(), id: \.0) { category, list in
+                    sectionHeader(category)
+                    LazyVGrid(columns: gridColumns, spacing: theme.spacing.s) {
+                        ForEach(list) { preset in
+                            presetChip(preset)
+                        }
+                    }
+                }
             }
-            .frame(maxHeight: maxGridHeight)
+            .padding(.vertical, 2)
+        } else {
+            LazyVGrid(columns: gridColumns, spacing: theme.spacing.s) {
+                ForEach(catalog) { preset in
+                    presetChip(preset)
+                }
+            }
+            .padding(.vertical, 2)
         }
     }
 
@@ -272,14 +284,25 @@ public struct DKThemePicker: View {
         .accessibilityLabel("\(preset.displayName)\(isSelected ? ", selected" : "")")
     }
 
+    /// Selecting a preset changes the preset. It does **not** touch the display
+    /// mode.
+    ///
+    /// It used to: 25 of the 34 shipped presets carry a `preferredScheme`, and
+    /// choosing any of them silently rewrote `themeManager.mode` — a control
+    /// reassigning a different control's saved value, with no warning before the
+    /// tap and no notice after it. Pick Bubblegum in dark mode and you were put
+    /// into light.
+    ///
+    /// It bought nothing. `PresetTheme.light` and `.dark` are both
+    /// non-optional, so every preset has always been fully defined in both
+    /// schemes. `preferredScheme` is a recommendation, and it is now expressed
+    /// as one: the chip previews itself in the scheme it was designed for
+    /// (`previewScheme(fallback:)`) while the app stays where the user put it.
     private func selectPreset(_ preset: PresetTheme) {
         if let raw = ThemePreset(rawValue: preset.id) {
             themeManager.preset = raw
         }
         themeManager.resetOverrides()
-        if let preferred = preset.preferredScheme {
-            themeManager.mode = preferred == .dark ? .dark : .light
-        }
     }
 
     // MARK: - Custom panel

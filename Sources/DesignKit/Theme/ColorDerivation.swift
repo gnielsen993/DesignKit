@@ -69,9 +69,9 @@ enum ColorDerivation {
             accentPrimary: anchors.accent,
             accentSecondary: accentSecondary,
             highlight: highlight,
-            success: isDark ? Color(hex: "#22C55E") : Color(hex: "#16A34A"),
-            warning: isDark ? Color(hex: "#F59E0B") : Color(hex: "#D97706"),
-            danger: isDark ? Color(hex: "#EF4444") : Color(hex: "#DC2626"),
+            success: adaptedSignal(isDark ? Color(hex: "#22C55E") : Color(hex: "#16A34A"), on: anchors.background),
+            warning: adaptedSignal(isDark ? Color(hex: "#F59E0B") : Color(hex: "#D97706"), on: anchors.background),
+            danger: adaptedSignal(isDark ? Color(hex: "#EF4444") : Color(hex: "#DC2626"), on: anchors.background),
             fillPressed: fillPressed,
             fillSelected: fillSelected,
             fillDisabled: fillDisabled,
@@ -123,6 +123,78 @@ enum ColorDerivation {
         let bl = ca.b * (1 - ratio) + cb.b * ratio
         let al = ca.a * (1 - ratio) + cb.a * ratio
         return Color(.sRGB, red: r, green: g, blue: bl, opacity: al)
+    }
+
+    /// Perceptual chroma (OKLab) at which a background stops being a neutral
+    /// ground and starts competing with the colours drawn on it.
+    ///
+    /// **HSB saturation cannot be used here**, and a first attempt that did was
+    /// caught by `testEveryNeutralGroundIsBelowTheTrigger`: HSB measures
+    /// saturation relative to brightness, so Bubblegum's near-black `#1A0C12`
+    /// reports 0.54 while being visually almost neutral. Five soft and sweet
+    /// presets tripped a saturation trigger that no eye would agree with.
+    ///
+    /// 0.085 sits in a real gap in the shipped catalog — the loud light grounds
+    /// are 0.115 to 0.175 and Barbie's dark is 0.096, while the next value down
+    /// is Vaporwave's dark at 0.070 and every classic, soft and moody ground is
+    /// below 0.056.
+    static let signalGroundChromaTrigger: Double = 0.085
+
+    /// Chroma at which the adaptation reaches full strength — the loudest
+    /// ground the catalog ships (Barbie light, 0.175).
+    private static let signalGroundChromaCeiling: Double = 0.175
+
+    /// OKLab chroma. Lightness-independent, which is the whole reason it is
+    /// used instead of HSB saturation.
+    static func chroma(_ color: Color) -> Double? {
+        guard let c = rgbComponents(color) else { return nil }
+        func lin(_ v: Double) -> Double {
+            v <= 0.04045 ? v / 12.92 : pow((v + 0.055) / 1.055, 2.4)
+        }
+        let r = lin(c.r), g = lin(c.g), b = lin(c.b)
+        let l = cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b)
+        let m = cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b)
+        let s = cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b)
+        let a = 1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s
+        let bb = 0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s
+        return (a * a + bb * bb).squareRoot()
+    }
+
+    /// Keeps a signal colour's **hue** and moves only its shade, so amber stays
+    /// amber and green stays green in every preset.
+    ///
+    /// The fixed signal colours (2026-07-29: state colours do not follow the
+    /// theme) were chosen against a near-neutral ground, which is what every
+    /// preset had until the `bright` family made its loud colour the background.
+    /// On those, an unchanged amber reads as a second competing colour rather
+    /// than a signal.
+    ///
+    /// **This is a no-op wherever the ground is already neutral** — which is
+    /// almost everywhere, including every preset in the sibling apps. It cannot
+    /// change a theme that did not have the problem.
+    ///
+    /// Deliberately not contrast-driven: on Barbie the amber has perfectly
+    /// adequate contrast against the pale card it sits on. The complaint was
+    /// never legibility, it was that the whole field reads as saturated, so the
+    /// trigger is the ground's chroma and the response is to push the signal
+    /// away from it in value.
+    static func adaptedSignal(_ signal: Color, on ground: Color) -> Color {
+        guard let groundChroma = chroma(ground), groundChroma >= signalGroundChromaTrigger,
+              let g = hsbComponents(ground), let s = hsbComponents(signal) else { return signal }
+
+        // How far past the trigger the ground sits, 0...1.
+        let span = signalGroundChromaCeiling - signalGroundChromaTrigger
+        let excess = min(1, max(0, (groundChroma - signalGroundChromaTrigger) / span))
+        let shift = 0.18 * excess
+
+        // Move away from the ground: deepen on a light ground, lift on a dark
+        // one. A signal that drifts toward the ground's own value is the thing
+        // that disappears into it.
+        let groundIsLight = g.b > 0.5
+        let brightness = clamp(groundIsLight ? s.b - shift : s.b + shift)
+        let saturation = clamp(groundIsLight ? s.s + 0.05 * excess : s.s - 0.05 * excess)
+
+        return Color(hue: wrap(s.h), saturation: saturation, brightness: brightness)
     }
 
     private static func rgbComponents(_ color: Color) -> (r: Double, g: Double, b: Double, a: Double)? {
